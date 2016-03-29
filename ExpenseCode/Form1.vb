@@ -595,9 +595,11 @@ Public Class Form1
         Dim iRow As Long = 0
         Dim inext As Long = 582
         Dim inext2 As Long = 595
-        Dim rptdir As String = "C:\Manimoole\GirishBhatM\GIT_WORK\Expensemanager\Statements"
+        Dim rptdir As String = My.Application.Info.DirectoryPath & "\..\statements"
         Dim rptencFilename As String
         Dim rptclearFilename As String = My.Application.Info.DirectoryPath & "\tmpreport"
+        Dim rptmetaFilename As String = My.Application.Info.DirectoryPath & "\tmpmetareport.pdf"
+        Dim metadatatxt As String = My.Application.Info.DirectoryPath & "\metadata.txt"
         Dim thisDate As Date = Today
         Dim dirnamedate As String = thisDate
         Dim curyear As Integer = Year(thisDate)
@@ -605,6 +607,8 @@ Public Class Form1
         Dim strProgramName As String = My.Application.Info.DirectoryPath & "\pdftk.exe"
         Dim pdftk As New Process()
         Dim Pwduser As String = "aitpb3106f"
+        Dim Pwdowner As String = "india21"
+
         If (curmonth >= 1 And curmonth <= 3) Then
             dirnamedate = Trim(Str(curyear - 1)) & "_" & Trim(Str(curyear))
         ElseIf (curmonth >= 4 And curmonth <= 12) Then
@@ -656,18 +660,42 @@ Public Class Form1
             .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=rptclearFilename, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
         End With
         closeexcelsheet()
-        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generation"
-        'Password Protect the Report file.
         rptclearFilename = rptclearFilename & ".pdf"
-        rptclearFilename = """" & rptclearFilename & """"
-        rptencFilename = """" & rptencFilename & """"
-        Pwduser = """" & Pwduser & """"
+        Dim org1 As String = rptclearFilename
+        Dim org2 As String = rptmetaFilename
+        '----------------------------------------------------------------------------
+        metadatatxt = """" & metadatatxt & """"
+        rptmetaFilename = """" & rptmetaFilename & """"
+
         pdftk.StartInfo.FileName = """" & strProgramName & """"
-        pdftk.StartInfo.Arguments = rptclearFilename & " Output " & rptencFilename & " User_pw " & Pwduser & " Allow AllFeatures"
+        pdftk.StartInfo.Arguments = rptclearFilename & " update_info " & metadatatxt & " Output " & rptmetaFilename
         pdftk.StartInfo.UseShellExecute = False
-        pdftk.StartInfo.RedirectStandardOutput = True
+        pdftk.StartInfo.RedirectStandardOutput = False
         pdftk.Start()
         pdftk.WaitForExit()
+        '----------------------------------------------------------------------------
+        'Password Protect the Report file.
+        '----------------------------------------------------------------------------
+        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generation"
+        rptencFilename = """" & rptencFilename & """"
+        Pwduser = """" & Pwduser & """"
+        Pwdowner = """" & Pwdowner & """"
+        '----------------------------------------------------------------------------
+        pdftk.StartInfo.FileName = """" & strProgramName & """"
+        pdftk.StartInfo.Arguments = rptmetaFilename & " Output " & rptencFilename & " Owner_pw " & Pwdowner & " User_pw " & Pwduser & " Allow Printing"
+        pdftk.StartInfo.UseShellExecute = False
+        pdftk.StartInfo.RedirectStandardOutput = False
+        pdftk.Start()
+        pdftk.WaitForExit()
+
+        If pdftk.ExitCode = 0 Then
+            If My.Computer.FileSystem.FileExists(org1) Then
+                My.Computer.FileSystem.DeleteFile(org1)
+            End If
+            If My.Computer.FileSystem.FileExists(org2) Then
+                My.Computer.FileSystem.DeleteFile(org2)
+            End If
+        End If
         MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
     End Sub
 End Class

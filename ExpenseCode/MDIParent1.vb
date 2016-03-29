@@ -4,7 +4,7 @@
 
 Public Class MDIParent1
 
-    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 23.02.16.291"
+    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.318"
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
         ' Create a new instance of the child form.
