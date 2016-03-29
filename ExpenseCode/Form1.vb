@@ -600,6 +600,9 @@ Public Class Form1
         Dim reportdir As String = thisDate
         Dim curyear As Integer = Year(thisDate)
         Dim curmonth As Integer = Month(thisDate)
+        Dim strProgramName As String
+        Dim strArgument As String
+
         If (curmonth >= 1 And curmonth <= 3) Then
             reportdir = Trim(Str(curyear - 1)) & "_" & Trim(Str(curyear))
         ElseIf (curmonth >= 4 And curmonth <= 12) Then
@@ -653,6 +656,15 @@ Public Class Form1
             .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=reportFileName, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=True)
         End With
         closeexcelsheet()
+
+        strProgramName = My.Application.Info.DirectoryPath & "\pdftk.exe"
+        strProgramName = """ & strProgramName & """
+
+        Call Shell(strProgramName, vbNormalFocus)
+
+
+
+       
 
 
         MDIParent1.ToolStripStatusLabel.Text = "Statement Completed"
