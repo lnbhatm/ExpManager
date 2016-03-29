@@ -595,7 +595,7 @@ Public Class Form1
         Dim iRow As Long = 0
         Dim inext As Long = 582
         Dim inext2 As Long = 595
-        Dim reportFileName As String = "C:\Manimoole\GirishBhatM\Records\Account\"
+        Dim reportFileName As String = "C:\LakshminarayanaBhatM\Work\ExpManager\Statements"
         Dim thisDate As Date = Today
         Dim reportdir As String = thisDate
         Dim curyear As Integer = Year(thisDate)
@@ -605,15 +605,15 @@ Public Class Form1
         ElseIf (curmonth >= 4 And curmonth <= 12) Then
             reportdir = Trim(Str(curyear)) & "_" & Trim(Str(curyear + 1))
         End If
-        reportFileName = reportFileName & reportdir
+        reportFileName = reportFileName & "\" & reportdir
         If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
             My.Computer.FileSystem.CreateDirectory(reportFileName)
         End If
-        reportFileName = reportFileName & "\Statements"
         If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
             My.Computer.FileSystem.CreateDirectory(reportFileName)
         End If
-        reportFileName = reportFileName & "\" & Month(thisDate) & UCase(MonthName(Month(thisDate), True)) & curyear
+
+        reportFileName = reportFileName & "\" & Format(thisDate, "MM") & UCase(Format(thisDate, "MMM")) & curyear
         If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
             My.Computer.FileSystem.CreateDirectory(reportFileName)
         End If
@@ -653,7 +653,9 @@ Public Class Form1
             .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=reportFileName, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=True)
         End With
         closeexcelsheet()
-        MDIParent1.ToolStripStatusLabel.Text = "Statement Created"
+
+
+        MDIParent1.ToolStripStatusLabel.Text = "Statement Completed"
 
     End Sub
 End Class
