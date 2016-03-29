@@ -671,6 +671,7 @@ Public Class Form1
         pdftk.StartInfo.Arguments = rptclearFilename & " update_info " & metadatatxt & " Output " & rptmetaFilename
         pdftk.StartInfo.UseShellExecute = False
         pdftk.StartInfo.RedirectStandardOutput = False
+        pdftk.StartInfo.CreateNoWindow = True
         pdftk.Start()
         pdftk.WaitForExit()
         '----------------------------------------------------------------------------
@@ -685,6 +686,7 @@ Public Class Form1
         pdftk.StartInfo.Arguments = rptmetaFilename & " Output " & rptencFilename & " Owner_pw " & Pwdowner & " User_pw " & Pwduser & " Allow Printing"
         pdftk.StartInfo.UseShellExecute = False
         pdftk.StartInfo.RedirectStandardOutput = False
+        pdftk.StartInfo.CreateNoWindow = True
         pdftk.Start()
         pdftk.WaitForExit()
 
