@@ -1,0 +1,41 @@
+'Dim procID As Integer
+        ' Dim newProc As Diagnostics.Process
+        ' newProc = Diagnostics.Process.Start("""" & strProgramName & """")
+        'procID = newProc.Id
+
+        'newProc.WaitForExit()
+        ' Dim procEC As Integer = -1
+        'If newProc.HasExited Then
+        'procEC = newProc.ExitCode
+        'End If
+        ' MsgBox("Process with ID " & CStr(procID) & _
+        ' " terminated with exit code " & CStr(procEC))
+		
+		
+		
+		Dim oProcess As New Process()
+        Dim oStartInfo As New ProcessStartInfo("""" & strProgramName & """")
+        oStartInfo.UseShellExecute = False
+        oStartInfo.RedirectStandardOutput = True
+        oProcess.StartInfo = oStartInfo
+        oProcess.Start()
+
+        Dim sOutput As String
+        Using oStreamReader As System.IO.StreamReader = oProcess.StandardOutput
+            sOutput = oStreamReader.ReadToEnd()
+        End Using
+        Console.WriteLine(sOutput)
+        MsgBox(sOutput)
+		
+		
+		Dim p As New Process()
+        Dim sOutput As String
+        Dim oStartInfo As New ProcessStartInfo("""" & strProgramName & """", """" & tmpreportFileName & """ ""output"" """ & reportFileName & """ ")
+        oStartInfo.UseShellExecute = False
+        oStartInfo.RedirectStandardOutput = True
+        p.StartInfo = oStartInfo
+        p.Start()
+        sOutput = p.StandardOutput.ReadToEnd()
+        p.WaitForExit()
+        MsgBox(sOutput)
+        Console.WriteLine(sOutput)

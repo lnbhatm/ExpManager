@@ -595,30 +595,32 @@ Public Class Form1
         Dim iRow As Long = 0
         Dim inext As Long = 582
         Dim inext2 As Long = 595
-        Dim reportFileName As String = "C:\LakshminarayanaBhatM\Work\ExpManager\Statements"
+        Dim rptdir As String = "C:\Manimoole\GirishBhatM\GIT_WORK\Expensemanager\Statements"
+        Dim rptencFilename As String
+        Dim rptclearFilename As String = My.Application.Info.DirectoryPath & "\tmpreport"
         Dim thisDate As Date = Today
-        Dim reportdir As String = thisDate
+        Dim dirnamedate As String = thisDate
         Dim curyear As Integer = Year(thisDate)
         Dim curmonth As Integer = Month(thisDate)
-        Dim strProgramName As String
-        Dim strArgument As String
-
+        Dim strProgramName As String = My.Application.Info.DirectoryPath & "\pdftk.exe"
+        Dim pdftk As New Process()
+        Dim Pwduser As String = "aitpb3106f"
         If (curmonth >= 1 And curmonth <= 3) Then
-            reportdir = Trim(Str(curyear - 1)) & "_" & Trim(Str(curyear))
+            dirnamedate = Trim(Str(curyear - 1)) & "_" & Trim(Str(curyear))
         ElseIf (curmonth >= 4 And curmonth <= 12) Then
-            reportdir = Trim(Str(curyear)) & "_" & Trim(Str(curyear + 1))
+            dirnamedate = Trim(Str(curyear)) & "_" & Trim(Str(curyear + 1))
         End If
-        reportFileName = reportFileName & "\" & reportdir
-        If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
-            My.Computer.FileSystem.CreateDirectory(reportFileName)
+        rptdir = rptdir & "\" & dirnamedate
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
         End If
-        If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
-            My.Computer.FileSystem.CreateDirectory(reportFileName)
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
         End If
 
-        reportFileName = reportFileName & "\" & Format(thisDate, "MM") & UCase(Format(thisDate, "MMM")) & curyear
-        If My.Computer.FileSystem.DirectoryExists(reportFileName) = False Then
-            My.Computer.FileSystem.CreateDirectory(reportFileName)
+        rptdir = rptdir & "\" & Format(thisDate, "MM") & UCase(Format(thisDate, "MMM")) & curyear
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
         End If
         openexcelsheet()
         MDIParent1.ToolStripStatusLabel.Text = "Printing the Statement"
@@ -650,25 +652,23 @@ Public Class Form1
             .PageSetup.FitToPagesTall = False
             .PageSetup.FitToPagesWide = False
             .PageSetup.Zoom = 82
-            reportFileName = reportFileName & "\" & Format(worksheetexp.Cells(183, 2).value, "yyyy_MM_dd")
-            reportFileName = reportFileName & ".pdf"
-            '.PrintOutEx(Copies:=1, Collate:=True, ActivePrinter:="Adobe PDF")
-            .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=reportFileName, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=True)
+            rptencFilename = rptdir & "\" & Format(worksheetexp.Cells(183, 2).value, "yyyy_MM_dd") & ".pdf"
+            .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=rptclearFilename, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
         End With
         closeexcelsheet()
-
-        strProgramName = My.Application.Info.DirectoryPath & "\pdftk.exe"
-        strProgramName = """ & strProgramName & """
-
-        Call Shell(strProgramName, vbNormalFocus)
-
-
-
-       
-
-
-        MDIParent1.ToolStripStatusLabel.Text = "Statement Completed"
-
+        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generation"
+        'Password Protect the Report file.
+        rptclearFilename = rptclearFilename & ".pdf"
+        rptclearFilename = """" & rptclearFilename & """"
+        rptencFilename = """" & rptencFilename & """"
+        Pwduser = """" & Pwduser & """"
+        pdftk.StartInfo.FileName = """" & strProgramName & """"
+        pdftk.StartInfo.Arguments = rptclearFilename & " Output " & rptencFilename & " User_pw " & Pwduser & " Allow AllFeatures"
+        pdftk.StartInfo.UseShellExecute = False
+        pdftk.StartInfo.RedirectStandardOutput = True
+        pdftk.Start()
+        pdftk.WaitForExit()
+        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
     End Sub
 End Class
 
