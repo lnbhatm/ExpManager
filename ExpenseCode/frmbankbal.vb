@@ -147,9 +147,11 @@ Public Class frmbankbal
             init_header(gridbankdata, "Bank", 1)
             show_grid(worksheet.Cells(27, 2).value, worksheet.Cells(27, 4).value, 0)
         ElseIf cbobnktype.Text = "MPHASIS PF" Then
-            init_header(gridbankdata, "Bank", 1)
+            init_header(gridbankdata, "Provident Fund Summary", 2)
             loc = 32
             show_grid(worksheet.Cells(loc, 2).value, worksheet.Cells(loc, 4).value, 0)
+            loc = 36
+            show_grid(worksheet.Cells(loc, 2).value, worksheet.Cells(loc, 4).value, 1)
         End If
         For Each row As DataGridViewRow In gridbankdata.Rows
             sum = sum + row.Cells(1).Value

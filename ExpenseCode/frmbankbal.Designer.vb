@@ -98,9 +98,9 @@ Partial Class frmbankbal
         Me.Label3.Font = New System.Drawing.Font("Calibri", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.Location = New System.Drawing.Point(51, 249)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 23)
+        Me.Label3.Size = New System.Drawing.Size(64, 23)
         Me.Label3.TabIndex = 5
-        Me.Label3.Text = "SUM"
+        Me.Label3.Text = "TOTAL:"
         '
         'txtsum
         '

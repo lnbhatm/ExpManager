@@ -554,21 +554,23 @@ Public Class frmreport
         If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
             My.Computer.FileSystem.CreateDirectory(rptdir)
         End If
-
         ExcelAcountManagerOpen()
         If myRecordopen = True Then
             main.ToolStripStatusLabel.Text = "Printing the Statement"
             With worksheet
                 iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
-                For lopidx = 314 To iRow
+                worksheet.Cells(inext, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
+                inext = inext + 1
+                worksheet.Cells(inext2, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
+                inext2 = inext2 + 1
+                For lopidx = 315 To iRow
                     If worksheet.Cells(lopidx, 6).value = "BANK025" Then
-                        worksheet.Cells(581, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
                         worksheet.Cells(inext, 2).value = worksheet.Cells(lopidx, 2).value
                         worksheet.Cells(inext, 3).value = worksheet.Cells(lopidx, 3).value
                         worksheet.Cells(inext, 4).value = worksheet.Cells(lopidx, 4).value
                         inext = inext + 1
                     ElseIf worksheet.Cells(lopidx, 7).value = "BANK025" Then
-                        worksheet.Cells(594, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
+
                         worksheet.Cells(inext2, 2).value = worksheet.Cells(lopidx, 2).value
                         worksheet.Cells(inext2, 3).value = worksheet.Cells(lopidx, 3).value
                         worksheet.Cells(inext2, 4).value = worksheet.Cells(lopidx, 4).value
@@ -578,7 +580,6 @@ Public Class frmreport
             End With
 
             With worksheet
-                'iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
                 .PageSetup.Orientation = Excel.XlPageOrientation.xlPortrait
                 .PageSetup.PaperSize = Excel.XlPaperSize.xlPaperA4
                 .PageSetup.PrintArea = "$A$181:$D$" & iRow & ",$A$581:$D$646"
