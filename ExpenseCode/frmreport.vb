@@ -584,7 +584,7 @@ Public Class frmreport
                 .PageSetup.PrintArea = "$A$181:$D$" & iRow & ",$A$581:$D$646"
                 .PageSetup.FitToPagesTall = False
                 .PageSetup.FitToPagesWide = False
-                .PageSetup.Zoom = 82
+                .PageSetup.Zoom = 81
                 .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=rptclearFilename, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
             End With
             rptencFilename = rptdir & "\" & Format(worksheet.Cells(183, 2).value, "yyyy_MM_dd") & ".pdf"
