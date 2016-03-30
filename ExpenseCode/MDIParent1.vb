@@ -4,7 +4,7 @@
 
 Public Class MDIParent1
 
-    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.318"
+    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.323"
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
         ' Create a new instance of the child form.
@@ -176,5 +176,9 @@ Public Class MDIParent1
         If MsgBox("Are you sure you want to exit Account Manager?", vbCritical + vbYesNo, "Exit") = vbYes Then
             Application.Exit()
         End If
+    End Sub
+
+    Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip.ItemClicked
+
     End Sub
 End Class

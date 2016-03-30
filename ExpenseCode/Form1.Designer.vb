@@ -50,7 +50,6 @@ Partial Class Form1
         Me.cborecordtype = New System.Windows.Forms.ComboBox()
         Me.txtslno = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.cmdRpt = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'cmdexit
@@ -362,18 +361,6 @@ Partial Class Form1
         Me.Label10.TabIndex = 32
         Me.Label10.Text = "TRANSACTIONS"
         '
-        'cmdRpt
-        '
-        Me.cmdRpt.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdRpt.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdRpt.ForeColor = System.Drawing.Color.Red
-        Me.cmdRpt.Location = New System.Drawing.Point(657, 381)
-        Me.cmdRpt.Name = "cmdRpt"
-        Me.cmdRpt.Size = New System.Drawing.Size(85, 26)
-        Me.cmdRpt.TabIndex = 33
-        Me.cmdRpt.Text = "REPORT"
-        Me.cmdRpt.UseVisualStyleBackColor = True
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -381,7 +368,6 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(885, 415)
-        Me.Controls.Add(Me.cmdRpt)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtslno)
         Me.Controls.Add(Me.cborecordtype)
@@ -448,6 +434,5 @@ Partial Class Form1
     Friend WithEvents txtsrcbank As System.Windows.Forms.TextBox
     Friend WithEvents txtslno As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents cmdRpt As System.Windows.Forms.Button
 
 End Class

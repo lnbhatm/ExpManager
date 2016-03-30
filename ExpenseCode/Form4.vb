@@ -524,11 +524,114 @@ Public Class frmcashdist
     End Sub
     
    
+    Private Sub cmdreport_Click(sender As Object, e As EventArgs) Handles cmdreport.Click
+        Dim iRow As Long = 0
+        Dim inext As Long = 582
+        Dim inext2 As Long = 595
+        Dim rptdir As String = My.Application.Info.DirectoryPath & "\..\statements"
+        Dim rptencFilename As String
+        Dim rptclearFilename As String = My.Application.Info.DirectoryPath & "\tmpreport"
+        Dim rptmetaFilename As String = My.Application.Info.DirectoryPath & "\tmpmetareport.pdf"
+        Dim metadatatxt As String = My.Application.Info.DirectoryPath & "\metadata.txt"
+        Dim thisDate As Date = Today
+        Dim dirnamedate As String = thisDate
+        Dim curyear As Integer = Year(thisDate)
+        Dim curmonth As Integer = Month(thisDate)
+        Dim strProgramName As String = My.Application.Info.DirectoryPath & "\pdftk.exe"
+        Dim pdftk As New Process()
+        Dim Pwduser As String = "aitpb3106f"
+        Dim Pwdowner As String = "india21"
 
-    
-   
-   
-    Private Sub txtvar1_TextChanged(sender As Object, e As EventArgs) Handles txtvar1.TextChanged
+        If (curmonth >= 1 And curmonth <= 3) Then
+            dirnamedate = Trim(Str(curyear - 1)) & "_" & Trim(Str(curyear))
+        ElseIf (curmonth >= 4 And curmonth <= 12) Then
+            dirnamedate = Trim(Str(curyear)) & "_" & Trim(Str(curyear + 1))
+        End If
+        rptdir = rptdir & "\" & dirnamedate
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
+        End If
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
+        End If
 
+        rptdir = rptdir & "\" & Format(thisDate, "MM") & UCase(Format(thisDate, "MMM")) & curyear
+        If My.Computer.FileSystem.DirectoryExists(rptdir) = False Then
+            My.Computer.FileSystem.CreateDirectory(rptdir)
+        End If
+
+        ExcelAcountManagerOpen()
+        If myRecordopen = True Then
+            MDIParent1.ToolStripStatusLabel.Text = "Printing the Statement"
+            With worksheet
+                iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
+                For lopidx = 314 To iRow
+                    If worksheet.Cells(lopidx, 6).value = "BANK025" Then
+                        worksheet.Cells(581, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
+                        worksheet.Cells(inext, 2).value = worksheet.Cells(lopidx, 2).value
+                        worksheet.Cells(inext, 3).value = worksheet.Cells(lopidx, 3).value
+                        worksheet.Cells(inext, 4).value = worksheet.Cells(lopidx, 4).value
+                        inext = inext + 1
+                    ElseIf worksheet.Cells(lopidx, 7).value = "BANK025" Then
+                        worksheet.Cells(594, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
+                        worksheet.Cells(inext2, 2).value = worksheet.Cells(lopidx, 2).value
+                        worksheet.Cells(inext2, 3).value = worksheet.Cells(lopidx, 3).value
+                        worksheet.Cells(inext2, 4).value = worksheet.Cells(lopidx, 4).value
+                        inext2 = inext2 + 1
+                    End If
+                Next
+            End With
+
+            With worksheet
+                'iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
+                .PageSetup.Orientation = Excel.XlPageOrientation.xlPortrait
+                .PageSetup.PaperSize = Excel.XlPaperSize.xlPaperA4
+                .PageSetup.PrintArea = "$A$181:$D$" & iRow & ",$A$581:$D$646"
+                .PageSetup.FitToPagesTall = False
+                .PageSetup.FitToPagesWide = False
+                .PageSetup.Zoom = 82
+                rptencFilename = rptdir & "\" & Format(worksheet.Cells(183, 2).value, "yyyy_MM_dd") & ".pdf"
+                .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=rptclearFilename, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
+            End With
+        End If
+        rptclearFilename = rptclearFilename & ".pdf"
+        Dim org1 As String = rptclearFilename
+        Dim org2 As String = rptmetaFilename
+        '----------------------------------------------------------------------------
+        metadatatxt = """" & metadatatxt & """"
+        rptmetaFilename = """" & rptmetaFilename & """"
+
+        pdftk.StartInfo.FileName = """" & strProgramName & """"
+        pdftk.StartInfo.Arguments = rptclearFilename & " update_info " & metadatatxt & " Output " & rptmetaFilename
+        pdftk.StartInfo.UseShellExecute = False
+        pdftk.StartInfo.RedirectStandardOutput = False
+        pdftk.StartInfo.CreateNoWindow = True
+        pdftk.Start()
+        pdftk.WaitForExit()
+        '----------------------------------------------------------------------------
+        'Password Protect the Report file.
+        '----------------------------------------------------------------------------
+        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generation"
+        rptencFilename = """" & rptencFilename & """"
+        Pwduser = """" & Pwduser & """"
+        Pwdowner = """" & Pwdowner & """"
+        '----------------------------------------------------------------------------
+        pdftk.StartInfo.FileName = """" & strProgramName & """"
+        pdftk.StartInfo.Arguments = rptmetaFilename & " Output " & rptencFilename & " Owner_pw " & Pwdowner & " User_pw " & Pwduser & " Allow Printing"
+        pdftk.StartInfo.UseShellExecute = False
+        pdftk.StartInfo.RedirectStandardOutput = False
+        pdftk.StartInfo.CreateNoWindow = True
+        pdftk.Start()
+        pdftk.WaitForExit()
+
+        If pdftk.ExitCode = 0 Then
+            If My.Computer.FileSystem.FileExists(org1) Then
+                My.Computer.FileSystem.DeleteFile(org1)
+            End If
+            If My.Computer.FileSystem.FileExists(org2) Then
+                My.Computer.FileSystem.DeleteFile(org2)
+            End If
+        End If
+        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
     End Sub
 End Class

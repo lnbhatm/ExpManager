@@ -71,7 +71,7 @@ Partial Class MDIParent1
         Me.SetupToolStripMenuItem1.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SetupToolStripMenuItem1.ForeColor = System.Drawing.Color.Indigo
         Me.SetupToolStripMenuItem1.Name = "SetupToolStripMenuItem1"
-        Me.SetupToolStripMenuItem1.Size = New System.Drawing.Size(160, 22)
+        Me.SetupToolStripMenuItem1.Size = New System.Drawing.Size(170, 22)
         Me.SetupToolStripMenuItem1.Text = "Reset"
         '
         'SetupToolStripMenuItem
@@ -79,7 +79,7 @@ Partial Class MDIParent1
         Me.SetupToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SetupToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.SetupToolStripMenuItem.Text = "Bank"
         '
         'TransactionEntryToolStripMenuItem
@@ -87,23 +87,23 @@ Partial Class MDIParent1
         Me.TransactionEntryToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TransactionEntryToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.TransactionEntryToolStripMenuItem.Name = "TransactionEntryToolStripMenuItem"
-        Me.TransactionEntryToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
-        Me.TransactionEntryToolStripMenuItem.Text = "Transactions"
+        Me.TransactionEntryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.TransactionEntryToolStripMenuItem.Text = "Expenses"
         '
         'CashDistributionToolStripMenuItem
         '
         Me.CashDistributionToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CashDistributionToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.CashDistributionToolStripMenuItem.Name = "CashDistributionToolStripMenuItem"
-        Me.CashDistributionToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
-        Me.CashDistributionToolStripMenuItem.Text = "Breakup"
+        Me.CashDistributionToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.CashDistributionToolStripMenuItem.Text = "Report"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExitToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ShowToolStripMenuItem

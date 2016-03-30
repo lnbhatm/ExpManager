@@ -80,6 +80,7 @@ Partial Class frmcashdist
         Me.cmdupdate1 = New System.Windows.Forms.Button()
         Me.cmdAdd = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdreport = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
@@ -467,7 +468,7 @@ Partial Class frmcashdist
         '
         Me.cmdupdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdupdate.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdupdate.Location = New System.Drawing.Point(108, 18)
+        Me.cmdupdate.Location = New System.Drawing.Point(116, 18)
         Me.cmdupdate.Name = "cmdupdate"
         Me.cmdupdate.Size = New System.Drawing.Size(91, 31)
         Me.cmdupdate.TabIndex = 30
@@ -478,7 +479,7 @@ Partial Class frmcashdist
         '
         Me.cmdsave.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdsave.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdsave.Location = New System.Drawing.Point(205, 18)
+        Me.cmdsave.Location = New System.Drawing.Point(221, 18)
         Me.cmdsave.Name = "cmdsave"
         Me.cmdsave.Size = New System.Drawing.Size(91, 31)
         Me.cmdsave.TabIndex = 31
@@ -489,7 +490,7 @@ Partial Class frmcashdist
         '
         Me.cmdexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdexit.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdexit.Location = New System.Drawing.Point(302, 18)
+        Me.cmdexit.Location = New System.Drawing.Point(431, 18)
         Me.cmdexit.Name = "cmdexit"
         Me.cmdexit.Size = New System.Drawing.Size(91, 31)
         Me.cmdexit.TabIndex = 32
@@ -757,12 +758,24 @@ Partial Class frmcashdist
         Me.GroupBox1.Controls.Add(Me.cmdsave)
         Me.GroupBox1.Controls.Add(Me.cmdupdate)
         Me.GroupBox1.Controls.Add(Me.cmdload)
+        Me.GroupBox1.Controls.Add(Me.cmdreport)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.GroupBox1.Location = New System.Drawing.Point(80, 515)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(402, 56)
+        Me.GroupBox1.Size = New System.Drawing.Size(537, 56)
         Me.GroupBox1.TabIndex = 57
         Me.GroupBox1.TabStop = False
+        '
+        'cmdreport
+        '
+        Me.cmdreport.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdreport.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdreport.Location = New System.Drawing.Point(326, 18)
+        Me.cmdreport.Name = "cmdreport"
+        Me.cmdreport.Size = New System.Drawing.Size(91, 31)
+        Me.cmdreport.TabIndex = 33
+        Me.cmdreport.Text = "REPORT"
+        Me.cmdreport.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
@@ -930,4 +943,5 @@ Partial Class frmcashdist
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents cmdreport As System.Windows.Forms.Button
 End Class
