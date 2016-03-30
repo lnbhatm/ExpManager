@@ -5,7 +5,7 @@ Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
 
-Public Class frmsetupdata
+Public Class frmaccsetup
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
     Dim workbook As Excel.Workbook = Nothing

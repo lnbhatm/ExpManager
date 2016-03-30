@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmcashdist
+Partial Class frmreport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -836,7 +836,7 @@ Partial Class frmcashdist
         Me.GroupBox3.TabIndex = 60
         Me.GroupBox3.TabStop = False
         '
-        'frmcashdist
+        'frmreport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -870,7 +870,7 @@ Partial Class frmcashdist
         Me.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.Name = "frmcashdist"
+        Me.Name = "frmreport"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CASH DISTRIBUTION "
         Me.GroupBox1.ResumeLayout(False)

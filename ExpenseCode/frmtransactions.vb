@@ -6,7 +6,7 @@ Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
 
-Public Class Form1
+Public Class frmtransactions
     Dim APP As New Excel.Application
     Dim worksheetexp As Excel.Worksheet = Nothing
     Dim wrksheetrnt As Excel.Worksheet = Nothing
@@ -129,7 +129,7 @@ Public Class Form1
             worksheetexp.Cells(currentIndex, 6).Value = txtsrcbank.Text
             worksheetexp.Cells(currentIndex, 7).Value = txtdestbank.Text
             worksheetexp.Cells(currentIndex, 8).Value = txtincome.Text
-            
+
             If (txtitemcode.Text = "CODE008") Then
                 With wrksheetrnt
                     index = .Range("L" & .Rows.Count).End(Excel.XlDirection.xlUp).Row + 1
@@ -277,10 +277,8 @@ Public Class Form1
     End Sub
 
     Private Sub cmdexit_Click(sender As Object, e As EventArgs) Handles cmdexit.Click
-        If MsgBox("Are you sure you want to exit?", vbCritical + vbYesNo, "Confirm Exit") = vbYes Then
-            closeexcelsheet()
-            Me.Close()
-        End If
+        closeexcelsheet()
+        Me.Close()
     End Sub
 
     Private Sub cboitemcode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboitemcode.SelectedIndexChanged
@@ -334,7 +332,7 @@ Public Class Form1
         txtitemdesc.Text = cboincome.Text
     End Sub
 
-    
+
 
     Private Sub cmdreset_Click(sender As Object, e As EventArgs) Handles cmdreset.Click
         Dim ctr As Control

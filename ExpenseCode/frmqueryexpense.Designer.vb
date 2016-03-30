@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmquery
+Partial Class frmqueryexpense
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -181,7 +181,7 @@ Partial Class frmquery
         Me.txtavail.Size = New System.Drawing.Size(87, 22)
         Me.txtavail.TabIndex = 14
         '
-        'frmquery
+        'frmqueryexpense
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -195,7 +195,7 @@ Partial Class frmquery
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmquery"
+        Me.Name = "frmqueryexpense"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         CType(Me.datadisplay, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EventLog1, System.ComponentModel.ISupportInitialize).EndInit()

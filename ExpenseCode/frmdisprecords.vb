@@ -5,7 +5,7 @@ Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
 
-Public Class frmrecord
+Public Class frmdisprecord
 
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing

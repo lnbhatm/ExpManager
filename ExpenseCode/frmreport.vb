@@ -4,7 +4,7 @@ Imports System.Data
 Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
-Public Class frmcashdist
+Public Class frmreport
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
     Dim workbook As Excel.Workbook = Nothing
@@ -34,7 +34,7 @@ Public Class frmcashdist
         cboAccount.Items.Add("COINS IN USE")
         cboAccount.Items.Add("CALCULATOR")
         cboAccount.Sorted = True
-      
+
     End Sub
 
     Private Sub ExcelAcountManagerOpen()
@@ -106,7 +106,7 @@ Public Class frmcashdist
         txtsum.Text = sum
     End Sub
 
-  
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles cmdload.Click
         Dim rowindex As Integer = 0
@@ -137,13 +137,8 @@ Public Class frmcashdist
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles cmdexit.Click
-
-        If MsgBox("Are You Sure You Want To Exit?", vbYesNo, "Exit") = vbYes Then
-            ExcelAcountManagerClose()
-            Me.Close()
-        Else
-            Exit Sub
-        End If
+        ExcelAcountManagerClose()
+        Me.Close()
     End Sub
 
     Private Sub cmdupdate_Click(sender As Object, e As EventArgs) Handles cmdupdate.Click
@@ -522,8 +517,8 @@ Public Class frmcashdist
         txtvar1.Enabled = True
         txtvar1.Focus()
     End Sub
-    
-   
+
+
     Private Sub cmdreport_Click(sender As Object, e As EventArgs) Handles cmdreport.Click
         Dim iRow As Long = 0
         Dim inext As Long = 582
@@ -562,7 +557,7 @@ Public Class frmcashdist
 
         ExcelAcountManagerOpen()
         If myRecordopen = True Then
-            MDIParent1.ToolStripStatusLabel.Text = "Printing the Statement"
+            main.ToolStripStatusLabel.Text = "Printing the Statement"
             With worksheet
                 iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
                 For lopidx = 314 To iRow
@@ -590,17 +585,19 @@ Public Class frmcashdist
                 .PageSetup.FitToPagesTall = False
                 .PageSetup.FitToPagesWide = False
                 .PageSetup.Zoom = 82
-                rptencFilename = rptdir & "\" & Format(worksheet.Cells(183, 2).value, "yyyy_MM_dd") & ".pdf"
                 .ExportAsFixedFormat(Type:=Excel.XlFixedFormatType.xlTypePDF, Quality:=Excel.XlFixedFormatQuality.xlQualityStandard, Filename:=rptclearFilename, IncludeDocProperties:=True, IgnorePrintAreas:=False, OpenAfterPublish:=False)
             End With
+            rptencFilename = rptdir & "\" & Format(worksheet.Cells(183, 2).value, "yyyy_MM_dd") & ".pdf"
+        Else
+            rptencFilename = rptdir ' resolve compiler warning , better code needs to be written
         End If
+
         rptclearFilename = rptclearFilename & ".pdf"
         Dim org1 As String = rptclearFilename
         Dim org2 As String = rptmetaFilename
         '----------------------------------------------------------------------------
         metadatatxt = """" & metadatatxt & """"
         rptmetaFilename = """" & rptmetaFilename & """"
-
         pdftk.StartInfo.FileName = """" & strProgramName & """"
         pdftk.StartInfo.Arguments = rptclearFilename & " update_info " & metadatatxt & " Output " & rptmetaFilename
         pdftk.StartInfo.UseShellExecute = False
@@ -611,7 +608,7 @@ Public Class frmcashdist
         '----------------------------------------------------------------------------
         'Password Protect the Report file.
         '----------------------------------------------------------------------------
-        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generation"
+        main.ToolStripStatusLabel.Text = "Protected Statement Generation"
         rptencFilename = """" & rptencFilename & """"
         Pwduser = """" & Pwduser & """"
         Pwdowner = """" & Pwdowner & """"
@@ -632,6 +629,6 @@ Public Class frmcashdist
                 My.Computer.FileSystem.DeleteFile(org2)
             End If
         End If
-        MDIParent1.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
+        main.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
     End Sub
 End Class

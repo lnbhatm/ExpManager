@@ -4,7 +4,7 @@ Imports System.Data
 Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
-Public Class Form2
+Public Class frmbankupdate
 
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
@@ -45,34 +45,28 @@ Public Class Form2
         txtcurcrdt.TextAlign = HorizontalAlignment.Right
         txtcursav.TextAlign = HorizontalAlignment.Right
         txtSavings.TextAlign = HorizontalAlignment.Right
-        MDIParent1.ToolStripStatusLabel.Text = "Load Sucess"
+        main.ToolStripStatusLabel.Text = "Load Sucess"
     End Sub
 
     Private Sub cmdexit_Click(sender As Object, e As EventArgs) Handles cmdexit.Click
-       
+
         If cmdsave.Enabled = True Then
-            MsgBox("Record Not Updated!", vbInformation, "Update")
+            MsgBox("Record Update Failed!", vbCritical, "Update")
         End If
-
-
-        If MsgBox("Are You Sure You Want to Exit!", vbYesNo + vbCritical, "Exit Confirmation") = vbYes Then
-            If blnExcelOpen = True Then
-                workbook.Close()
-                GC.Collect()
-                GC.WaitForPendingFinalizers()
-                GC.Collect()
-                GC.WaitForPendingFinalizers()
-                Marshal.FinalReleaseComObject(worksheet)
-                Marshal.FinalReleaseComObject(workbook)
-                APP.Quit()
-                Marshal.FinalReleaseComObject(APP)
-                blnExcelOpen = False
-                cbobankcode.Items.Clear()
-            End If
-            Me.Close()
-        Else
-
+        If blnExcelOpen = True Then
+            workbook.Close()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+            GC.Collect()
+            GC.WaitForPendingFinalizers()
+            Marshal.FinalReleaseComObject(worksheet)
+            Marshal.FinalReleaseComObject(workbook)
+            APP.Quit()
+            Marshal.FinalReleaseComObject(APP)
+            blnExcelOpen = False
+            cbobankcode.Items.Clear()
         End If
+        Me.Close()
     End Sub
 
     Private Sub cbobankcode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbobankcode.SelectedIndexChanged
@@ -168,6 +162,6 @@ Public Class Form2
                 mycontrol.Enabled = False
             End If
         Next
-        MDIParent1.ToolStripStatusLabel.Text = "Save Completed"
+        main.ToolStripStatusLabel.Text = "Save Completed"
     End Sub
 End Class

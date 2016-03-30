@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmrecord
+Partial Class frmdisprecord
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -80,7 +80,7 @@ Partial Class frmrecord
         Me.DataGridView1.Size = New System.Drawing.Size(836, 342)
         Me.DataGridView1.TabIndex = 7
         '
-        'frmrecord
+        'frmdisprecord
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -90,7 +90,7 @@ Partial Class frmrecord
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmrecord"
+        Me.Name = "frmdisprecord"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

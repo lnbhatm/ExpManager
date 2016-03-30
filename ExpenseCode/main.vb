@@ -2,7 +2,7 @@
 
 
 
-Public Class MDIParent1
+Public Class main
 
     Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.323"
 
@@ -91,7 +91,7 @@ Public Class MDIParent1
 
     Private Sub TransactionEntryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TransactionEntryToolStripMenuItem.Click
 
-        Dim NewMDIChild As New Form1()
+        Dim NewMDIChild As New frmtransactions()
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -106,7 +106,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub SetupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetupToolStripMenuItem.Click
-        Dim NewMDIChild As New Form2()
+        Dim NewMDIChild As New frmbankupdate()
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -115,7 +115,7 @@ Public Class MDIParent1
 
 
     Private Sub CashDistributionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CashDistributionToolStripMenuItem.Click
-        Dim NewMDIChild As New frmcashdist
+        Dim NewMDIChild As New frmreport
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -130,7 +130,7 @@ Public Class MDIParent1
 
     Private Sub BankingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BankingToolStripMenuItem.Click
 
-        Dim NewMDIChild As New frmbankdata
+        Dim NewMDIChild As New frmbankbal
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -139,7 +139,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub SetupToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SetupToolStripMenuItem1.Click
-        Dim NewMDIChild As New frmsetupdata
+        Dim NewMDIChild As New frmaccsetup
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -147,7 +147,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub ExpenseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExpenseToolStripMenuItem.Click
-        Dim NewMDIChild As New frmrecord
+        Dim NewMDIChild As New frmdisprecord
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.
@@ -157,15 +157,8 @@ Public Class MDIParent1
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         MsgBox(msg, vbInformation, "About")
     End Sub
-
-    Private Sub QuitApplicationToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuitApplicationToolStripMenuItem.Click
-        If MsgBox("Are you sure you want to exit Account Manager?", vbCritical + vbYesNo, "Exit") = vbYes Then
-            Application.Exit()
-        End If
-    End Sub
-
     Private Sub QueryToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QueryToolStripMenuItem.Click
-        Dim NewMDIChild As New frmquery
+        Dim NewMDIChild As New frmqueryexpense
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
         'Display the new form.

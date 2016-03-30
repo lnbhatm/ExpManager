@@ -4,7 +4,7 @@ Imports System.Data
 Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
 
-Public Class frmquery
+Public Class frmqueryexpense
 
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
@@ -223,7 +223,7 @@ Public Class frmquery
             coloumnindex = 3
             derivedisplaydatafromcomboselection(cboexp.SelectedItem, coloumnindex)
         End If
-       
+
     End Sub
 
     Private Sub cmdexit_Click(sender As Object, e As EventArgs) Handles cmdexit.Click

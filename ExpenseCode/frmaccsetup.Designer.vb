@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmsetupdata
+Partial Class frmaccsetup
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -66,7 +66,7 @@ Partial Class frmsetupdata
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "MONTHLY SETUP"
         '
-        'frmsetupdata
+        'frmaccsetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -76,7 +76,7 @@ Partial Class frmsetupdata
         Me.Controls.Add(Me.cmdnew)
         Me.Controls.Add(Me.cmdexit)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmsetupdata"
+        Me.Name = "frmaccsetup"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.ResumeLayout(False)
         Me.PerformLayout()

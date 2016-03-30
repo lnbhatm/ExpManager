@@ -3,7 +3,7 @@ Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Data
 Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
-Public Class frmbankdata
+Public Class frmbankbal
 
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
@@ -151,9 +151,6 @@ Public Class frmbankdata
             loc = 32
             show_grid(worksheet.Cells(loc, 2).value, worksheet.Cells(loc, 4).value, 0)
         End If
-
-
-
         For Each row As DataGridViewRow In gridbankdata.Rows
             sum = sum + row.Cells(1).Value
         Next

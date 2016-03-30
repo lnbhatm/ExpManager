@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class frmtransactions
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -361,7 +361,7 @@ Partial Class Form1
         Me.Label10.TabIndex = 32
         Me.Label10.Text = "TRANSACTIONS"
         '
-        'Form1
+        'frmtrans
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -397,7 +397,7 @@ Partial Class Form1
         Me.Controls.Add(Me.txtitemdesc)
         Me.Controls.Add(Me.cmdexit)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "Form1"
+        Me.Name = "frmtrans"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TRANSACTIONS"

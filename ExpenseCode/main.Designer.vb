@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class MDIParent1
+Partial Class main
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,6 +24,7 @@ Partial Class MDIParent1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(main))
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.MainToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SetupToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,7 +38,6 @@ Partial Class MDIParent1
         Me.QueryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HELPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.QuitApplicationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
@@ -63,15 +63,15 @@ Partial Class MDIParent1
         Me.MainToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainToolStripMenuItem.ForeColor = System.Drawing.Color.Green
         Me.MainToolStripMenuItem.Name = "MainToolStripMenuItem"
-        Me.MainToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
-        Me.MainToolStripMenuItem.Text = "DATA"
+        Me.MainToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.MainToolStripMenuItem.Text = "FILE"
         '
         'SetupToolStripMenuItem1
         '
         Me.SetupToolStripMenuItem1.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SetupToolStripMenuItem1.ForeColor = System.Drawing.Color.Indigo
         Me.SetupToolStripMenuItem1.Name = "SetupToolStripMenuItem1"
-        Me.SetupToolStripMenuItem1.Size = New System.Drawing.Size(170, 22)
+        Me.SetupToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.SetupToolStripMenuItem1.Text = "Reset"
         '
         'SetupToolStripMenuItem
@@ -79,8 +79,8 @@ Partial Class MDIParent1
         Me.SetupToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SetupToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
-        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.SetupToolStripMenuItem.Text = "Bank"
+        Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SetupToolStripMenuItem.Text = "Savings"
         '
         'TransactionEntryToolStripMenuItem
         '
@@ -95,7 +95,7 @@ Partial Class MDIParent1
         Me.CashDistributionToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CashDistributionToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.CashDistributionToolStripMenuItem.Name = "CashDistributionToolStripMenuItem"
-        Me.CashDistributionToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.CashDistributionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CashDistributionToolStripMenuItem.Text = "Report"
         '
         'ExitToolStripMenuItem
@@ -103,7 +103,7 @@ Partial Class MDIParent1
         Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExitToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ShowToolStripMenuItem
@@ -120,27 +120,27 @@ Partial Class MDIParent1
         '
         Me.BankingToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.BankingToolStripMenuItem.Name = "BankingToolStripMenuItem"
-        Me.BankingToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
-        Me.BankingToolStripMenuItem.Text = "Bank Balance"
+        Me.BankingToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.BankingToolStripMenuItem.Text = "Balance"
         '
         'ExpenseToolStripMenuItem
         '
         Me.ExpenseToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.ExpenseToolStripMenuItem.Name = "ExpenseToolStripMenuItem"
-        Me.ExpenseToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
+        Me.ExpenseToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ExpenseToolStripMenuItem.Text = "Transactions"
         '
         'QueryToolStripMenuItem
         '
         Me.QueryToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
         Me.QueryToolStripMenuItem.Name = "QueryToolStripMenuItem"
-        Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
-        Me.QueryToolStripMenuItem.Text = "Query"
+        Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.QueryToolStripMenuItem.Text = "Record"
         '
         'HELPToolStripMenuItem
         '
         Me.HELPToolStripMenuItem.BackColor = System.Drawing.Color.White
-        Me.HELPToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem, Me.QuitApplicationToolStripMenuItem})
+        Me.HELPToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HELPToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HELPToolStripMenuItem.ForeColor = System.Drawing.Color.Green
         Me.HELPToolStripMenuItem.Name = "HELPToolStripMenuItem"
@@ -151,15 +151,8 @@ Partial Class MDIParent1
         '
         Me.AboutToolStripMenuItem.ForeColor = System.Drawing.Color.Red
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
-        Me.AboutToolStripMenuItem.Text = "About App"
-        '
-        'QuitApplicationToolStripMenuItem
-        '
-        Me.QuitApplicationToolStripMenuItem.ForeColor = System.Drawing.Color.Red
-        Me.QuitApplicationToolStripMenuItem.Name = "QuitApplicationToolStripMenuItem"
-        Me.QuitApplicationToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
-        Me.QuitApplicationToolStripMenuItem.Text = "Quit App"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Text = "About"
         '
         'StatusStrip
         '
@@ -181,7 +174,7 @@ Partial Class MDIParent1
         Me.ToolStripStatusLabel.Text = "Status"
         Me.ToolStripStatusLabel.VisitedLinkColor = System.Drawing.Color.White
         '
-        'MDIParent1
+        'main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -193,10 +186,11 @@ Partial Class MDIParent1
         Me.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "MDIParent1"
+        Me.Name = "main"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Personal Account Manager"
         Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
@@ -222,7 +216,6 @@ Partial Class MDIParent1
     Friend WithEvents SetupToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HELPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents QuitApplicationToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents QueryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
