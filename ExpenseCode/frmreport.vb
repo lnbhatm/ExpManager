@@ -9,22 +9,38 @@ Public Class frmreport
     Dim worksheet As Excel.Worksheet = Nothing
     Dim workbook As Excel.Workbook = Nothing
     Dim myRecordopen As Boolean = False
-    Dim cmdaddclicked As Boolean = False
-    Private Sub frmcashdist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim ctr As Control
-        For Each ctr In Me.Controls
-            If TypeOf ctr Is TextBox Then
-                ctr.Enabled = False
+    Public Sub DisableTextBox(ByVal root As Control)
+        For Each ctrl As Control In root.Controls
+            DisableTextBox(ctrl)
+            If TypeOf ctrl Is TextBox Then
+                CType(ctrl, TextBox).Enabled = False
             End If
-        Next ctr
+        Next ctrl
+    End Sub
 
+
+    Public Sub EmptyTextBox(ByVal root As Control)
+        For Each ctrl As Control In root.Controls
+            EmptyTextBox(ctrl)
+            If TypeOf ctrl Is TextBox Then
+                'If CType(ctrl, TextBox).Name.StartsWith("txtnum") Then
+                CType(ctrl, TextBox).Text = String.Empty
+            End If
+        Next ctrl
+    End Sub
+
+
+
+    Private Sub frmcashdist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DisableSound()
+        DisableTextBox(Me)
         cmdload.Enabled = True
         cmdupdate.Enabled = False
         cmdexit.Enabled = True
         cmdsave.Enabled = False
         cboAccount.Enabled = False
-        cmdAdd.Enabled = False
-        cmdupdate1.Enabled = False
+        cmdcredit.Enabled = False
+        cmddebit.Enabled = False
         cboAccount.Items.Add("GIRISH")
         cboAccount.Items.Add("KARTHIK")
         cboAccount.Items.Add("SHUBHA")
@@ -65,47 +81,6 @@ Public Class frmreport
             Marshal.FinalReleaseComObject(APP)
         End If
     End Sub
-
-
-
-    Private Sub sumofcalculation(ByVal txtcontrol1 As TextBox, ByVal txtcontrol2 As TextBox)
-        Dim sum As Double = 0.0
-        If txtcontrol1.Text <> vbNullString And DataValidation(txtcontrol1) <> False Then
-            If Val(txtcontrol1.Text) > Val(txtAccount.Text) And cmdaddclicked = False Then
-                MsgBox("Available Amount: " + vbTab + txtAccount.Text + Environment.NewLine + "Amount Spent: " + vbTab + _
-                    CType(Val(txtcontrol1.Text), Double).ToString("f2") + Environment.NewLine + "Amount Requested is More than Available", _
-                       vbCritical, "ERROR")
-                txtcontrol1.Text = ""
-                txtcontrol1.Focus()
-                Exit Sub
-            End If
-            If Val(txtsum.Text) > 0 Then
-                cmdupdate1.Enabled = True
-            End If
-        Else
-            txtcontrol1.Focus()
-            Exit Sub
-        End If
-        sum = Val(txtvar1.Text) + Val(txtvar2.Text) + Val(txtvar3.Text) + Val(txtvar4.Text) + Val(txtvar5.Text) + _
-               Val(txtvar6.Text) + Val(txtvar7.Text) + Val(txtvar8.Text) + Val(txtvar9.Text) + Val(txtvar10.Text) + _
-               Val(txtvar11.Text) + Val(txtvar12.Text) + Val(txtvar13.Text) + Val(txtvar14.Text) + Val(txtvar15.Text) + _
-               Val(txtvar16.Text)
-        If cboAccount.Text <> "CALCULATOR" And cmdaddclicked = False Then
-            sum = Val(txtAccount.Text) - sum
-        ElseIf cboAccount.Text <> "CALCULATOR" And cmdaddclicked = True Then
-            sum = Val(txtAccount.Text) + sum
-        End If
-        If (sum < 0) Then
-            MsgBox("Please Check Your Balance and then try again", vbCritical, "Insufficient Balance")
-            txtcontrol2.Enabled = False
-            txtcontrol1.Enabled = False
-            txtcontrol1.Text = ""
-            cmdupdate1.Enabled = True
-            Exit Sub
-        End If
-        txtsum.Text = sum
-    End Sub
-
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles cmdload.Click
@@ -164,7 +139,6 @@ Public Class frmreport
             txttotcash.Text = Decimal.Round(worksheet.Cells(rowindex + 12, 3).Value, 2).ToString("f2")
             cmdupdate.Enabled = False
             cmdload.Enabled = False
-            cmdsave.Enabled = True
             cboAccount.Enabled = True
         End If
     End Sub
@@ -189,13 +163,8 @@ Public Class frmreport
                 cmdupdate.Enabled = True
                 cboAccount.Enabled = False
                 cboAccount.Text = ""
-                Dim ctr As Control
-                For Each ctr In Me.Controls
-                    If TypeOf ctr Is TextBox Then
-                        ctr.Enabled = False
-                        ctr.Text = ""
-                    End If
-                Next ctr
+                EmptyTextBox(Me)
+                cmdsave.Enabled = False
             Else
                 MsgBox("Record is closed")
             End If
@@ -205,16 +174,9 @@ Public Class frmreport
     End Sub
 
     Private Sub cboAccount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAccount.SelectedIndexChanged
-        Dim ctr As Control
-        For Each ctr In Me.Controls
-            If TypeOf ctr Is TextBox Then
-                If ctr.Name.StartsWith("txtvar") Then
-                    ctr.Text = ""
-                    ctr.Enabled = False
-                End If
-            End If
-        Next ctr
-        cmdaddclicked = False
+        cmddebit.Enabled = True
+        cmdcredit.Enabled = True
+        'EmptyTextBox(Me)
         If cboAccount.Text = "GIRISH" Then
             txtAccount.Text = txtgirish.Text
         ElseIf cboAccount.Text = "SHUBHA" Then
@@ -224,11 +186,8 @@ Public Class frmreport
         ElseIf cboAccount.Text = "OTHER" Then
             txtAccount.Text = txtother.Text
         ElseIf cboAccount.Text = "CALCULATOR" Then
-            txtAccount.Text = ""
-            txtvar1.Enabled = True
-            txtvar1.Focus()
-            cmdaddclicked = True
-
+            cmddebit.Enabled = False
+            cmdcredit.Enabled = False
         ElseIf cboAccount.Text = "RESERVED COINS" Then
             txtAccount.Text = txtreservedcoin.Text
         ElseIf cboAccount.Text = "RESERVED NOTES" Then
@@ -236,19 +195,9 @@ Public Class frmreport
         ElseIf cboAccount.Text = "COINS IN USE" Then
             txtAccount.Text = txtusagecoin.Text
         End If
-        If cboAccount.Text <> "CALCULATOR" Then
-            If Val(txtAccount.Text) > 0 Then
-                txtvar1.Enabled = True
-                cmdupdate1.Enabled = True
-            Else
-                txtvar1.Enabled = False
-                cmdupdate1.Enabled = False
-            End If
-        End If
-        txtsum.Text = Val(txtAccount.Text)
+        txtnum1.Enabled = True
+        txtnum1.Focus()
         cboAccount.Enabled = False
-        cmdupdate1.Enabled = False
-        cmdAdd.Enabled = True
     End Sub
 
     Private Function DataValidation(ByVal txtctl As TextBox) As Boolean
@@ -275,7 +224,6 @@ Public Class frmreport
                     rowindex = .Range("B1:B580").Find(What:="Reserved Coins", LookAt:=Excel.XlLookAt.xlPart, LookIn:=Excel.XlFindLookIn.xlValues, SearchOrder:=Excel.XlSearchOrder.xlByRows, SearchDirection:=Excel.XlSearchDirection.xlPrevious, MatchCase:=False).Row
                 End If
             End With
-
             txtreservedcoin.Text = Decimal.Round(worksheet.Cells(rowindex, 3).Value, 2).ToString("f2")
             txtreservednotes.Text = Decimal.Round(worksheet.Cells(rowindex + 1, 3).Value, 2).ToString("f2")
             txtusagecoin.Text = Decimal.Round(worksheet.Cells(rowindex + 2, 3).Value, 2).ToString("f2")
@@ -289,234 +237,43 @@ Public Class frmreport
             txtcshonly.Text = Decimal.Round(worksheet.Cells(rowindex + 10, 3).Value, 2).ToString("f2")
             txttotcoin.Text = Decimal.Round(worksheet.Cells(rowindex + 11, 3).Value, 2).ToString("f2")
             txttotcash.Text = Decimal.Round(worksheet.Cells(rowindex + 12, 3).Value, 2).ToString("f2")
+        End If
+    End Sub
 
+    Private Sub cmdAdd_Click(sender As Object, e As EventArgs) Handles cmdcredit.Click
+        Dim newsum As Double = 0.0
+        cmddebit.Enabled = False
+        cmdcredit.Enabled = False
+        newsum = CType(Val(txtsum.Text) + Val(txtAccount.Text), Double).ToString("f2")
+        updatedistribution(newsum)
+        cmdsave.Enabled = True
+    End Sub
+
+    Private Sub updatedistribution(newsum As Double)
+        If cboAccount.Text = "GIRISH" Then
+            cashdistributionfieldupdate(txtgirish, newsum)
+        ElseIf cboAccount.Text = "KARTHIK" Then
+            cashdistributionfieldupdate(txtkarthik, newsum)
+        ElseIf cboAccount.Text = "SHUBHA" Then
+            cashdistributionfieldupdate(txtshubha, newsum)
+        ElseIf cboAccount.Text = "OTHER" Then
+            cashdistributionfieldupdate(txtother, newsum)
+        ElseIf cboAccount.Text = "RESERVED COINS" Then
+            cashdistributionfieldupdate(txtreservedcoin, newsum)
+        ElseIf cboAccount.Text = "RESERVED NOTES" Then
+            cashdistributionfieldupdate(txtreservednotes, newsum)
+        ElseIf cboAccount.Text = "COINS IN USE" Then
+            cashdistributionfieldupdate(txtusagecoin, newsum)
+        End If
+    End Sub
+
+    Private Sub cashdistributionfieldupdate(ByVal txtctl As TextBox, newsum As Double)
+        If MsgBox("Balance: " & Val(txtctl.Text) & " New Balance: " & newsum, vbCritical + vbYesNo, "Confirm Account Credit") = vbYes Then
+            txtctl.Text = CType(newsum, Double).ToString("f2")
         End If
     End Sub
 
 
-
-
-
-    Private Sub txtvar1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar1.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar1, txtvar2)
-            cmdAdd.Enabled = False
-        End If
-    End Sub
-
-    Private Sub txtvar2_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar2.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar2, txtvar3)
-        End If
-    End Sub
-
-    Private Sub txtvar3_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar3.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar3, txtvar4)
-        End If
-    End Sub
-
-
-    Private Sub txtvar4_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar4.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar4, txtvar5)
-        End If
-    End Sub
-
-    Private Sub txtvar5_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar5.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar5, txtvar6)
-        End If
-    End Sub
-
-
-    Private Sub txtvar6_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar6.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar6, txtvar7)
-        End If
-    End Sub
-
-    Private Sub txtvar7_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar7.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar7, txtvar8)
-        End If
-    End Sub
-
-    Private Sub txtvar8_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar8.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar8, txtvar9)
-        End If
-    End Sub
-
-    Private Sub txtvar9_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar9.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar9, txtvar10)
-        End If
-    End Sub
-
-    Private Sub txtvar10_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar10.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar10, txtvar11)
-        End If
-    End Sub
-
-    Private Sub txtvar11_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar11.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar11, txtvar12)
-        End If
-    End Sub
-
-    Private Sub txtvar12_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar12.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar12, txtvar13)
-        End If
-    End Sub
-
-    Private Sub txtvar13_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar13.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar13, txtvar14)
-        End If
-    End Sub
-
-    Private Sub txtvar14_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar14.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar14, txtvar15)
-        End If
-    End Sub
-
-    Private Sub txtvar15_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar15.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar15, txtvar16)
-        End If
-    End Sub
-
-    Private Sub txtvar16_KeyDown(sender As Object, e As KeyEventArgs) Handles txtvar16.KeyDown
-        If (e.KeyCode = Keys.Enter) Then
-            sumofcalculation(txtvar16, txtvar16)
-        End If
-    End Sub
-
-    Private Sub cmdupdate1_Click(sender As Object, e As EventArgs) Handles cmdupdate1.Click
-        If cboAccount.Text = "CALCULATOR" Then
-            EnableNextTextBox(txtvar1, txtvar2)
-            EnableNextTextBox(txtvar2, txtvar3)
-            EnableNextTextBox(txtvar3, txtvar4)
-            EnableNextTextBox(txtvar4, txtvar5)
-            EnableNextTextBox(txtvar5, txtvar6)
-            EnableNextTextBox(txtvar6, txtvar7)
-            EnableNextTextBox(txtvar7, txtvar8)
-            EnableNextTextBox(txtvar8, txtvar9)
-            EnableNextTextBox(txtvar9, txtvar10)
-            EnableNextTextBox(txtvar10, txtvar11)
-            EnableNextTextBox(txtvar11, txtvar12)
-            EnableNextTextBox(txtvar12, txtvar13)
-            EnableNextTextBox(txtvar13, txtvar14)
-            EnableNextTextBox(txtvar14, txtvar15)
-            EnableNextTextBox(txtvar15, txtvar16)
-            If txtvar16.Enabled = True Then
-                cmdupdate1.Enabled = True
-            Else
-                cmdupdate1.Enabled = False
-            End If
-        Else
-            If MsgBox("Are You Sure You Want to Upate?", vbYesNo + vbCritical, "Distribution Update") = vbYes Then
-
-                If cboAccount.Text = "GIRISH" Then
-                    If MsgBox("Girish Balance: " & Val(txtgirish.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtgirish.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-                ElseIf cboAccount.Text = "KARTHIK" Then
-                    If MsgBox("Karthik Balance: " & Val(txtkarthik.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtkarthik.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-                ElseIf cboAccount.Text = "SHUBHA" Then
-                    If MsgBox("Shubha Balance: " & Val(txtshubha.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtshubha.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-                ElseIf cboAccount.Text = "OTHER" Then
-                    If MsgBox("Other Balance: " & Val(txtother.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtother.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-
-                ElseIf cboAccount.Text = "RESERVED COINS" Then
-                    If MsgBox("Reserved Coins Balance: " & Val(txtreservedcoin.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtreservedcoin.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-
-                ElseIf cboAccount.Text = "RESERVED NOTES" Then
-                    If MsgBox("Reserved Notes Balance: " & Val(txtreservednotes.Text) & " New Balance: " & Val(txtsum.Text), vbYesNo, "Confirm Update") = vbYes Then
-                        txtreservednotes.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-
-
-                ElseIf cboAccount.Text = "COINS IN USE" Then
-                    If MsgBox("Daily Use Coins Balance: " & Val(txtusagecoin.Text) & " New Balance: " & Val(txtsum.Text), vbCritical + vbYesNo, "Confirm Update") = vbYes Then
-                        txtusagecoin.Text = CType(Val(txtsum.Text), Double).ToString("f2")
-                        cmdupdate1.Enabled = False
-                    Else
-                        Exit Sub
-                    End If
-
-                End If
-            Else
-                EnableNextTextBox(txtvar1, txtvar2)
-                EnableNextTextBox(txtvar2, txtvar3)
-                EnableNextTextBox(txtvar3, txtvar4)
-                EnableNextTextBox(txtvar4, txtvar5)
-                EnableNextTextBox(txtvar5, txtvar6)
-                EnableNextTextBox(txtvar6, txtvar7)
-                EnableNextTextBox(txtvar7, txtvar8)
-                EnableNextTextBox(txtvar8, txtvar9)
-                EnableNextTextBox(txtvar9, txtvar10)
-                EnableNextTextBox(txtvar10, txtvar11)
-                EnableNextTextBox(txtvar11, txtvar12)
-                EnableNextTextBox(txtvar12, txtvar13)
-                EnableNextTextBox(txtvar13, txtvar14)
-                EnableNextTextBox(txtvar14, txtvar15)
-                EnableNextTextBox(txtvar15, txtvar16)
-                If txtvar16.Enabled = True Then
-                    cmdupdate1.Enabled = True
-                Else
-                    cmdupdate1.Enabled = False
-                End If
-            End If
-        End If
-        cboAccount.Enabled = True
-    End Sub
-
-
-    Private Sub EnableNextTextBox(ByVal txtcurbox As TextBox, ByVal txtnextbox As TextBox)
-        If txtnextbox.Text = vbNullString And txtcurbox.Text <> vbNullString Then
-            txtnextbox.Enabled = True
-            txtnextbox.Focus()
-        End If
-    End Sub
-
-
-    Private Sub cmdAdd_Click(sender As Object, e As EventArgs) Handles cmdAdd.Click
-        cmdaddclicked = True
-        cmdAdd.Enabled = False
-        txtvar1.Enabled = True
-        txtvar1.Focus()
-    End Sub
 
 
     Private Sub cmdreport_Click(sender As Object, e As EventArgs) Handles cmdreport.Click
@@ -631,5 +388,143 @@ Public Class frmreport
             End If
         End If
         main.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
+    End Sub
+
+
+
+    Private Sub txtnum1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum1.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum2.Enabled = True
+            txtnum2.Focus()
+            txtnum1.Text = CType(Val(txtnum1.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum1.Text), Double).ToString("f2")
+            txtnum1.Enabled = False
+        End If
+    End Sub
+
+
+    Private Sub txtnum2_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum2.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum3.Enabled = True
+            txtnum3.Focus()
+            txtnum2.Text = CType(Val(txtnum2.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum2.Text), Double).ToString("f2")
+            txtnum2.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum3_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum3.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum4.Enabled = True
+            txtnum4.Focus()
+            txtnum3.Text = CType(Val(txtnum3.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum3.Text), Double).ToString("f2")
+            txtnum3.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum4_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum4.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum5.Enabled = True
+            txtnum5.Focus()
+            txtnum4.Text = CType(Val(txtnum4.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum4.Text), Double).ToString("f2")
+            txtnum4.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum5_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum5.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum6.Enabled = True
+            txtnum6.Focus()
+            txtnum5.Text = CType(Val(txtnum5.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum5.Text), Double).ToString("f2")
+            txtnum5.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum6_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum6.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum7.Enabled = True
+            txtnum7.Focus()
+            txtnum6.Text = CType(Val(txtnum6.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum6.Text), Double).ToString("f2")
+            txtnum6.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum7_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum7.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum8.Enabled = True
+            txtnum8.Focus()
+            txtnum7.Text = CType(Val(txtnum7.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum7.Text), Double).ToString("f2")
+            txtnum7.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum8_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum8.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum9.Enabled = True
+            txtnum9.Focus()
+            txtnum8.Text = CType(Val(txtnum8.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum8.Text), Double).ToString("f2")
+            txtnum8.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum9_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum9.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            txtnum10.Enabled = True
+            txtnum10.Focus()
+            txtnum9.Text = CType(Val(txtnum9.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum9.Text), Double).ToString("f2")
+            txtnum9.Enabled = False
+        End If
+    End Sub
+
+    Private Sub txtnum10_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum10.KeyDown
+        If (e.KeyCode = Keys.Enter) Then
+            Dim msgresult
+            txtnum10.Text = CType(Val(txtnum10.Text), Double).ToString("f2")
+            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum10.Text), Double).ToString("f2")
+            txtnum10.Enabled = False
+            msgresult = MsgBox("Click Yes to Credit,No to Debit ?", vbYesNoCancel Or MsgBoxStyle.Critical, "CREDIT/DEBIT")
+            If msgresult = vbYes Then
+                cmdcredit.PerformClick()
+            ElseIf msgresult = vbNo Then
+                cmddebit.PerformClick()
+            Else
+                MsgBox("Nothing to be done", vbCritical)
+                cmdsave.Enabled = False
+                cmdcredit.Enabled = False
+                cmddebit.Enabled = False
+                EmptyTextBox(Me)
+            End If
+        End If
+    End Sub
+
+    Private Sub cmdupdate1_Click(sender As Object, e As EventArgs) Handles cmddebit.Click
+        Dim newsum As Double = 0.0
+        cmddebit.Enabled = False
+        cmdcredit.Enabled = False
+        If Val(txtAccount.Text) < Val(txtsum.Text) Then
+            MsgBox("Something went wrong", vbCritical, "Inavalid Account Data")
+            EmptyTextBox(Me)
+            txtnum1.Enabled = True
+            txtnum1.Focus()
+            cmdupdate.Enabled = True
+            cboAccount.Text = ""
+            cboAccount.Enabled = False
+            cmdsave.Enabled = False
+            Exit Sub
+        End If
+        newsum = CType(Val(txtAccount.Text) - Val(txtsum.Text), Double).ToString("f2")
+        updatedistribution(newsum)
+        cmdsave.Enabled = True
+    End Sub
+
+    Private Sub txtnum10_TextChanged(sender As Object, e As EventArgs) Handles txtnum10.TextChanged
+
     End Sub
 End Class

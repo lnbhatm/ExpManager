@@ -59,34 +59,29 @@ Partial Class frmreport
         Me.cboAccount = New System.Windows.Forms.ComboBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtAccount = New System.Windows.Forms.TextBox()
-        Me.txtvar1 = New System.Windows.Forms.TextBox()
-        Me.txtvar2 = New System.Windows.Forms.TextBox()
-        Me.txtvar3 = New System.Windows.Forms.TextBox()
-        Me.txtvar4 = New System.Windows.Forms.TextBox()
-        Me.txtvar5 = New System.Windows.Forms.TextBox()
-        Me.txtvar6 = New System.Windows.Forms.TextBox()
-        Me.txtvar7 = New System.Windows.Forms.TextBox()
-        Me.txtvar8 = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.txtvar9 = New System.Windows.Forms.TextBox()
-        Me.txtvar10 = New System.Windows.Forms.TextBox()
-        Me.txtvar11 = New System.Windows.Forms.TextBox()
-        Me.txtvar12 = New System.Windows.Forms.TextBox()
-        Me.txtvar13 = New System.Windows.Forms.TextBox()
-        Me.txtvar14 = New System.Windows.Forms.TextBox()
-        Me.txtvar15 = New System.Windows.Forms.TextBox()
-        Me.txtvar16 = New System.Windows.Forms.TextBox()
+        Me.txtnum1 = New System.Windows.Forms.TextBox()
+        Me.txtnum2 = New System.Windows.Forms.TextBox()
+        Me.txtnum3 = New System.Windows.Forms.TextBox()
+        Me.txtnum4 = New System.Windows.Forms.TextBox()
+        Me.txtnum5 = New System.Windows.Forms.TextBox()
+        Me.txtnum6 = New System.Windows.Forms.TextBox()
+        Me.txtnum7 = New System.Windows.Forms.TextBox()
+        Me.txtnum8 = New System.Windows.Forms.TextBox()
+        Me.txtnum9 = New System.Windows.Forms.TextBox()
+        Me.txtnum10 = New System.Windows.Forms.TextBox()
         Me.txtsum = New System.Windows.Forms.TextBox()
-        Me.cmdupdate1 = New System.Windows.Forms.Button()
-        Me.cmdAdd = New System.Windows.Forms.Button()
+        Me.cmddebit = New System.Windows.Forms.Button()
+        Me.cmdcredit = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmdreport = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblcshdistr
@@ -514,7 +509,7 @@ Partial Class frmreport
         Me.cboAccount.FormattingEnabled = True
         Me.cboAccount.Location = New System.Drawing.Point(150, 20)
         Me.cboAccount.Name = "cboAccount"
-        Me.cboAccount.Size = New System.Drawing.Size(94, 23)
+        Me.cboAccount.Size = New System.Drawing.Size(135, 23)
         Me.cboAccount.TabIndex = 34
         '
         'Label16
@@ -530,227 +525,152 @@ Partial Class frmreport
         'txtAccount
         '
         Me.txtAccount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtAccount.Location = New System.Drawing.Point(392, 20)
+        Me.txtAccount.Location = New System.Drawing.Point(413, 20)
         Me.txtAccount.Name = "txtAccount"
-        Me.txtAccount.Size = New System.Drawing.Size(94, 23)
+        Me.txtAccount.Size = New System.Drawing.Size(106, 23)
         Me.txtAccount.TabIndex = 36
         '
-        'txtvar1
+        'txtnum1
         '
-        Me.txtvar1.BackColor = System.Drawing.Color.White
-        Me.txtvar1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar1.Location = New System.Drawing.Point(703, 50)
-        Me.txtvar1.Name = "txtvar1"
-        Me.txtvar1.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar1.TabIndex = 37
-        Me.txtvar1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum1.BackColor = System.Drawing.Color.White
+        Me.txtnum1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum1.Location = New System.Drawing.Point(48, 30)
+        Me.txtnum1.Name = "txtnum1"
+        Me.txtnum1.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum1.TabIndex = 37
+        Me.txtnum1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar2
+        'txtnum2
         '
-        Me.txtvar2.BackColor = System.Drawing.Color.White
-        Me.txtvar2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar2.Location = New System.Drawing.Point(703, 85)
-        Me.txtvar2.Name = "txtvar2"
-        Me.txtvar2.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar2.TabIndex = 38
-        Me.txtvar2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum2.BackColor = System.Drawing.Color.White
+        Me.txtnum2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum2.Location = New System.Drawing.Point(48, 57)
+        Me.txtnum2.Name = "txtnum2"
+        Me.txtnum2.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum2.TabIndex = 38
+        Me.txtnum2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar3
+        'txtnum3
         '
-        Me.txtvar3.BackColor = System.Drawing.Color.White
-        Me.txtvar3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar3.Location = New System.Drawing.Point(703, 120)
-        Me.txtvar3.Name = "txtvar3"
-        Me.txtvar3.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar3.TabIndex = 39
-        Me.txtvar3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum3.BackColor = System.Drawing.Color.White
+        Me.txtnum3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum3.Location = New System.Drawing.Point(48, 84)
+        Me.txtnum3.Name = "txtnum3"
+        Me.txtnum3.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum3.TabIndex = 39
+        Me.txtnum3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar4
+        'txtnum4
         '
-        Me.txtvar4.BackColor = System.Drawing.Color.White
-        Me.txtvar4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar4.Location = New System.Drawing.Point(703, 155)
-        Me.txtvar4.Name = "txtvar4"
-        Me.txtvar4.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar4.TabIndex = 40
-        Me.txtvar4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum4.BackColor = System.Drawing.Color.White
+        Me.txtnum4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum4.Location = New System.Drawing.Point(48, 111)
+        Me.txtnum4.Name = "txtnum4"
+        Me.txtnum4.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum4.TabIndex = 40
+        Me.txtnum4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar5
+        'txtnum5
         '
-        Me.txtvar5.BackColor = System.Drawing.Color.White
-        Me.txtvar5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar5.Location = New System.Drawing.Point(703, 190)
-        Me.txtvar5.Name = "txtvar5"
-        Me.txtvar5.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar5.TabIndex = 41
-        Me.txtvar5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum5.BackColor = System.Drawing.Color.White
+        Me.txtnum5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum5.Location = New System.Drawing.Point(48, 138)
+        Me.txtnum5.Name = "txtnum5"
+        Me.txtnum5.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum5.TabIndex = 41
+        Me.txtnum5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar6
+        'txtnum6
         '
-        Me.txtvar6.BackColor = System.Drawing.Color.White
-        Me.txtvar6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar6.Location = New System.Drawing.Point(703, 225)
-        Me.txtvar6.Name = "txtvar6"
-        Me.txtvar6.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar6.TabIndex = 42
-        Me.txtvar6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum6.BackColor = System.Drawing.Color.White
+        Me.txtnum6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum6.Location = New System.Drawing.Point(48, 165)
+        Me.txtnum6.Name = "txtnum6"
+        Me.txtnum6.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum6.TabIndex = 42
+        Me.txtnum6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar7
+        'txtnum7
         '
-        Me.txtvar7.BackColor = System.Drawing.Color.White
-        Me.txtvar7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar7.Location = New System.Drawing.Point(703, 260)
-        Me.txtvar7.Name = "txtvar7"
-        Me.txtvar7.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar7.TabIndex = 43
-        Me.txtvar7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum7.BackColor = System.Drawing.Color.White
+        Me.txtnum7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum7.Location = New System.Drawing.Point(48, 192)
+        Me.txtnum7.Name = "txtnum7"
+        Me.txtnum7.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum7.TabIndex = 43
+        Me.txtnum7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar8
+        'txtnum8
         '
-        Me.txtvar8.BackColor = System.Drawing.Color.White
-        Me.txtvar8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar8.Location = New System.Drawing.Point(703, 295)
-        Me.txtvar8.Name = "txtvar8"
-        Me.txtvar8.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar8.TabIndex = 44
-        Me.txtvar8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum8.BackColor = System.Drawing.Color.White
+        Me.txtnum8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum8.Location = New System.Drawing.Point(48, 219)
+        Me.txtnum8.Name = "txtnum8"
+        Me.txtnum8.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum8.TabIndex = 44
+        Me.txtnum8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Label17
+        'txtnum9
         '
-        Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Green
-        Me.Label17.Location = New System.Drawing.Point(37, 481)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(72, 19)
-        Me.Label17.TabIndex = 45
-        Me.Label17.Text = "BALANCE"
+        Me.txtnum9.BackColor = System.Drawing.Color.White
+        Me.txtnum9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum9.Location = New System.Drawing.Point(48, 246)
+        Me.txtnum9.Name = "txtnum9"
+        Me.txtnum9.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum9.TabIndex = 46
+        Me.txtnum9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtvar9
+        'txtnum10
         '
-        Me.txtvar9.BackColor = System.Drawing.Color.White
-        Me.txtvar9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar9.Location = New System.Drawing.Point(703, 330)
-        Me.txtvar9.Name = "txtvar9"
-        Me.txtvar9.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar9.TabIndex = 46
-        Me.txtvar9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar10
-        '
-        Me.txtvar10.BackColor = System.Drawing.Color.White
-        Me.txtvar10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar10.Location = New System.Drawing.Point(703, 365)
-        Me.txtvar10.Name = "txtvar10"
-        Me.txtvar10.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar10.TabIndex = 47
-        Me.txtvar10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar11
-        '
-        Me.txtvar11.BackColor = System.Drawing.Color.White
-        Me.txtvar11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar11.Location = New System.Drawing.Point(703, 400)
-        Me.txtvar11.Name = "txtvar11"
-        Me.txtvar11.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar11.TabIndex = 48
-        Me.txtvar11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar12
-        '
-        Me.txtvar12.BackColor = System.Drawing.Color.White
-        Me.txtvar12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar12.Location = New System.Drawing.Point(703, 435)
-        Me.txtvar12.Name = "txtvar12"
-        Me.txtvar12.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar12.TabIndex = 49
-        Me.txtvar12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar13
-        '
-        Me.txtvar13.BackColor = System.Drawing.Color.White
-        Me.txtvar13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar13.Location = New System.Drawing.Point(703, 470)
-        Me.txtvar13.Name = "txtvar13"
-        Me.txtvar13.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar13.TabIndex = 50
-        Me.txtvar13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar14
-        '
-        Me.txtvar14.BackColor = System.Drawing.Color.White
-        Me.txtvar14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar14.Location = New System.Drawing.Point(703, 505)
-        Me.txtvar14.Name = "txtvar14"
-        Me.txtvar14.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar14.TabIndex = 51
-        Me.txtvar14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar15
-        '
-        Me.txtvar15.BackColor = System.Drawing.Color.White
-        Me.txtvar15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar15.Location = New System.Drawing.Point(703, 540)
-        Me.txtvar15.Name = "txtvar15"
-        Me.txtvar15.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar15.TabIndex = 52
-        Me.txtvar15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'txtvar16
-        '
-        Me.txtvar16.BackColor = System.Drawing.Color.White
-        Me.txtvar16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtvar16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtvar16.Location = New System.Drawing.Point(703, 575)
-        Me.txtvar16.Name = "txtvar16"
-        Me.txtvar16.Size = New System.Drawing.Size(94, 23)
-        Me.txtvar16.TabIndex = 53
-        Me.txtvar16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnum10.BackColor = System.Drawing.Color.White
+        Me.txtnum10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnum10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtnum10.Location = New System.Drawing.Point(48, 273)
+        Me.txtnum10.Name = "txtnum10"
+        Me.txtnum10.Size = New System.Drawing.Size(94, 23)
+        Me.txtnum10.TabIndex = 47
+        Me.txtnum10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtsum
         '
-        Me.txtsum.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtsum.BackColor = System.Drawing.Color.White
         Me.txtsum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtsum.ForeColor = System.Drawing.Color.Olive
-        Me.txtsum.Location = New System.Drawing.Point(178, 482)
+        Me.txtsum.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.txtsum.Location = New System.Drawing.Point(48, 338)
         Me.txtsum.Name = "txtsum"
-        Me.txtsum.Size = New System.Drawing.Size(123, 23)
-        Me.txtsum.TabIndex = 54
+        Me.txtsum.Size = New System.Drawing.Size(94, 26)
+        Me.txtsum.TabIndex = 48
+        Me.txtsum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'cmdupdate1
+        'cmddebit
         '
-        Me.cmdupdate1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdupdate1.Location = New System.Drawing.Point(546, 479)
-        Me.cmdupdate1.Name = "cmdupdate1"
-        Me.cmdupdate1.Size = New System.Drawing.Size(60, 26)
-        Me.cmdupdate1.TabIndex = 55
-        Me.cmdupdate1.Text = "NEXT"
-        Me.cmdupdate1.UseVisualStyleBackColor = True
+        Me.cmddebit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmddebit.Location = New System.Drawing.Point(768, 438)
+        Me.cmddebit.Name = "cmddebit"
+        Me.cmddebit.Size = New System.Drawing.Size(60, 26)
+        Me.cmddebit.TabIndex = 55
+        Me.cmddebit.Text = "DEBIT"
+        Me.cmddebit.UseVisualStyleBackColor = True
         '
-        'cmdAdd
+        'cmdcredit
         '
-        Me.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdAdd.Location = New System.Drawing.Point(546, 438)
-        Me.cmdAdd.Name = "cmdAdd"
-        Me.cmdAdd.Size = New System.Drawing.Size(60, 26)
-        Me.cmdAdd.TabIndex = 56
-        Me.cmdAdd.Text = "ADD"
-        Me.cmdAdd.UseVisualStyleBackColor = True
+        Me.cmdcredit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdcredit.Location = New System.Drawing.Point(699, 438)
+        Me.cmdcredit.Name = "cmdcredit"
+        Me.cmdcredit.Size = New System.Drawing.Size(60, 26)
+        Me.cmdcredit.TabIndex = 56
+        Me.cmdcredit.Text = "CREDIT"
+        Me.cmdcredit.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -760,9 +680,9 @@ Partial Class frmreport
         Me.GroupBox1.Controls.Add(Me.cmdload)
         Me.GroupBox1.Controls.Add(Me.cmdreport)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.GroupBox1.Location = New System.Drawing.Point(80, 515)
+        Me.GroupBox1.Location = New System.Drawing.Point(20, 452)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(537, 56)
+        Me.GroupBox1.Size = New System.Drawing.Size(540, 56)
         Me.GroupBox1.TabIndex = 57
         Me.GroupBox1.TabStop = False
         '
@@ -818,7 +738,7 @@ Partial Class frmreport
         '
         Me.Label18.AutoSize = True
         Me.Label18.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(262, 24)
+        Me.Label18.Location = New System.Drawing.Point(293, 24)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(112, 15)
         Me.Label18.TabIndex = 59
@@ -830,11 +750,31 @@ Partial Class frmreport
         Me.GroupBox3.Controls.Add(Me.txtAccount)
         Me.GroupBox3.Controls.Add(Me.Label16)
         Me.GroupBox3.Controls.Add(Me.cboAccount)
-        Me.GroupBox3.Location = New System.Drawing.Point(28, 425)
+        Me.GroupBox3.Location = New System.Drawing.Point(21, 396)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(500, 50)
+        Me.GroupBox3.Size = New System.Drawing.Size(539, 50)
         Me.GroupBox3.TabIndex = 60
         Me.GroupBox3.TabStop = False
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.txtnum1)
+        Me.GroupBox4.Controls.Add(Me.txtnum2)
+        Me.GroupBox4.Controls.Add(Me.txtnum4)
+        Me.GroupBox4.Controls.Add(Me.txtnum3)
+        Me.GroupBox4.Controls.Add(Me.txtnum5)
+        Me.GroupBox4.Controls.Add(Me.txtnum6)
+        Me.GroupBox4.Controls.Add(Me.txtnum7)
+        Me.GroupBox4.Controls.Add(Me.txtnum8)
+        Me.GroupBox4.Controls.Add(Me.txtsum)
+        Me.GroupBox4.Controls.Add(Me.txtnum9)
+        Me.GroupBox4.Controls.Add(Me.txtnum10)
+        Me.GroupBox4.Location = New System.Drawing.Point(677, 60)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(191, 372)
+        Me.GroupBox4.TabIndex = 61
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "GroupBox4"
         '
         'frmreport
         '
@@ -842,29 +782,12 @@ Partial Class frmreport
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1175, 605)
+        Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.cmdAdd)
-        Me.Controls.Add(Me.cmdupdate1)
-        Me.Controls.Add(Me.txtsum)
-        Me.Controls.Add(Me.txtvar16)
-        Me.Controls.Add(Me.txtvar15)
-        Me.Controls.Add(Me.txtvar14)
-        Me.Controls.Add(Me.txtvar13)
-        Me.Controls.Add(Me.txtvar12)
-        Me.Controls.Add(Me.txtvar11)
-        Me.Controls.Add(Me.txtvar10)
-        Me.Controls.Add(Me.txtvar9)
-        Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.txtvar8)
-        Me.Controls.Add(Me.txtvar7)
-        Me.Controls.Add(Me.txtvar6)
-        Me.Controls.Add(Me.txtvar5)
-        Me.Controls.Add(Me.txtvar4)
-        Me.Controls.Add(Me.txtvar3)
-        Me.Controls.Add(Me.txtvar2)
-        Me.Controls.Add(Me.txtvar1)
+        Me.Controls.Add(Me.cmdcredit)
+        Me.Controls.Add(Me.cmddebit)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.lblcshdistr)
         Me.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -878,6 +801,8 @@ Partial Class frmreport
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -919,29 +844,23 @@ Partial Class frmreport
     Friend WithEvents cboAccount As System.Windows.Forms.ComboBox
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents txtAccount As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar1 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar2 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar3 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar4 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar5 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar6 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar7 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar8 As System.Windows.Forms.TextBox
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents txtvar9 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar10 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar11 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar12 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar13 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar14 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar15 As System.Windows.Forms.TextBox
-    Friend WithEvents txtvar16 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum7 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum8 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum9 As System.Windows.Forms.TextBox
+    Friend WithEvents txtnum10 As System.Windows.Forms.TextBox
     Friend WithEvents txtsum As System.Windows.Forms.TextBox
-    Friend WithEvents cmdupdate1 As System.Windows.Forms.Button
-    Friend WithEvents cmdAdd As System.Windows.Forms.Button
+    Friend WithEvents cmddebit As System.Windows.Forms.Button
+    Friend WithEvents cmdcredit As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents cmdreport As System.Windows.Forms.Button
+    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
 End Class

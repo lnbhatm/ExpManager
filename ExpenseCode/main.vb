@@ -4,17 +4,15 @@
 
 Public Class main
 
-    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.323"
+    Dim msg As String = "Personal Account Manager " + vbNewLine + "Version: 30.03.16.329"
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs)
         ' Create a new instance of the child form.
         Dim ChildForm As New System.Windows.Forms.Form
         ' Make it a child of this MDI form before showing it.
         ChildForm.MdiParent = Me
-
         m_ChildFormNumber += 1
         ChildForm.Text = "Window " & m_ChildFormNumber
-
         ChildForm.Show()
     End Sub
 
@@ -118,6 +116,7 @@ Public Class main
         Dim NewMDIChild As New frmreport
         'Set the Parent Form of the Child window.
         NewMDIChild.MdiParent = Me
+
         'Display the new form.
         NewMDIChild.Show()
     End Sub
@@ -126,6 +125,7 @@ Public Class main
 
     Private Sub MDIParent1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = msg
+        My.Computer.Audio.Stop()
     End Sub
 
     Private Sub BankingToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BankingToolStripMenuItem.Click

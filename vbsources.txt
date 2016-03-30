@@ -22,13 +22,13 @@
 
         Dim sOutput As String
         Using oStreamReader As System.IO.StreamReader = oProcess.StandardOutput
-            sOutput = oStreamReader.ReadToEnd()
+        sOutput = oStreamReader.ReadToEnd()
         End Using
         Console.WriteLine(sOutput)
         MsgBox(sOutput)
 		
 		
-		Dim p As New Process()
+	Dim p As New Process()
         Dim sOutput As String
         Dim oStartInfo As New ProcessStartInfo("""" & strProgramName & """", """" & tmpreportFileName & """ ""output"" """ & reportFileName & """ ")
         oStartInfo.UseShellExecute = False
@@ -39,3 +39,15 @@
         p.WaitForExit()
         MsgBox(sOutput)
         Console.WriteLine(sOutput)
+
+
+
+
+	For Each ctr In Me.Controls
+            If TypeOf ctr Is TextBox Then
+                If ctr.Name.StartsWith("txtnum") Then
+                    ctr.Text = ""
+                    ctr.Enabled = False
+                End If
+            End If
+        Next ctr
