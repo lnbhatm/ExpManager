@@ -59,7 +59,7 @@ Public Class frmaccsetup
 
     Private Sub cmdnew_Click(sender As Object, e As EventArgs) Handles cmdnewmonth.Click
         ExcelAcountManagerOpen()
-        If MsgBox("ARE YOU SURE TO RESET ACCOUNT?" + vbNewLine + "Only reset in the start of the month.", vbYesNo + vbCritical, "Confirm Clear Records?") = vbYes Then
+        If MsgBox("CONFIRM THE ACCOUNT RESET FOR THIS MONTH?", vbYesNo + vbCritical, "Confirm Clear Records?") = vbYes Then
             If blnExcelOpen = True Then
                 Dim lopidx As Integer = 0
                 Dim startindex As Integer = 613
@@ -68,13 +68,12 @@ Public Class frmaccsetup
                 Dim currentmonth As Integer = 0
                 currentmonth = thisDay.Month
                 endingindex = startindex + System.DateTime.DaysInMonth(2016, currentmonth)
-                worksheet.Range("C613:C643").Value = ""
-                worksheet.Range("D613:D643").Value = ""
+                worksheet.Range("C613:D643").Value = ""
                 worksheet.Cells(startindex, 3).Value = (currentmonth) & "/1/" & thisDay.Year
                 worksheet.Range("C613").AutoFill(worksheet.Range("C613:C" & endingindex - 1), Excel.XlAutoFillType.xlFillDays)
                 worksheet.Range("D613").AutoFill(worksheet.Range("D613:D" & endingindex - 1), Excel.XlAutoFillType.xlFillDefault)
                 With worksheet
-                    .Range("D57:D70").Value = "0.00"
+                    .Range("income_prev_range").Value = "0.00"
                     For lopidx = 3 To 52
                         If .Cells(lopidx, 4).Value >= 0 Then
                             .Cells(lopidx, 9).Value = .Cells(lopidx, 4).Value
@@ -87,10 +86,10 @@ Public Class frmaccsetup
                     .Range("E3:F52").Value = "0.00"
                     .Range("I3:J52").Copy()
                     .Range("E3").PasteSpecial(Excel.XlPasteType.xlPasteValues, Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone)
-                    .Range("B" & TrnStrtIdx & ":H579").ClearContents()
+                    .Range(trans_entry_range).ClearContents()
                 End With
                 workbook.Save()
-                MsgBox("Record Cleared!", vbInformation, "CLEAR RECORD")
+                MsgBox("Record Cleared!", vbInformation, "Account")
             End If
         End If
         ExcelAcountManagerClose()
@@ -98,7 +97,7 @@ Public Class frmaccsetup
 
     Private Sub cmdnewyear_Click(sender As Object, e As EventArgs) Handles cmdnewyear.Click
         ExcelAcountManagerOpen()
-        If MsgBox("ARE YOU SURE TO RESET ACCOUNT?" + vbNewLine + "This Option to be used begining of every Year only.", vbYesNo + vbCritical, "Confirm Clear Records?") = vbYes Then
+        If MsgBox("CONFIRM THE ACCOUNT RESET FOR THIS YEAR?", vbYesNo + vbCritical, "Confirm Clear Records?") = vbYes Then
             If blnExcelOpen = True Then
                 Dim lopidx As Integer = 0
                 Dim startindex As Integer = 613
@@ -107,13 +106,12 @@ Public Class frmaccsetup
                 Dim currentmonth As Integer = 0
                 currentmonth = thisDay.Month
                 endingindex = startindex + System.DateTime.DaysInMonth(2016, currentmonth)
-                worksheet.Range("C613:C643").Value = ""
-                worksheet.Range("D613:D643").Value = ""
+                worksheet.Range("C613:D643").Value = ""
                 worksheet.Cells(startindex, 3).Value = (currentmonth) & "/1/" & thisDay.Year
                 worksheet.Range("C613").AutoFill(worksheet.Range("C613:C" & endingindex - 1), Excel.XlAutoFillType.xlFillDays)
                 worksheet.Range("D613").AutoFill(worksheet.Range("D613:D" & endingindex - 1), Excel.XlAutoFillType.xlFillDefault)
                 With worksheet
-                    .Range("D57:D70").Value = "0.00"
+                    .Range("income_prev_range").Value = "0.00"
                     For lopidx = 3 To 52
                         If .Cells(lopidx, 4).Value >= 0 Then
                             .Cells(lopidx, 9).Value = .Cells(lopidx, 4).Value
@@ -126,11 +124,11 @@ Public Class frmaccsetup
                     .Range("E3:F52").Value = "0.00"
                     .Range("I3:J52").Copy()
                     .Range("E3").PasteSpecial(Excel.XlPasteType.xlPasteValues, Excel.XlPasteSpecialOperation.xlPasteSpecialOperationNone)
-                    .Range("B" & TrnStrtIdx & ":H579").ClearContents()
-                    .Range("L77:W176").ClearContents()
+                    .Range(trans_entry_range).ClearContents()
+                    .Range(trans_mnth_year_range).ClearContents()
                 End With
                 workbook.Save()
-                MsgBox("Record Cleared!", vbInformation, "CLEAR RECORD")
+                MsgBox("Record Cleared!", vbInformation, "Account")
             End If
         End If
         ExcelAcountManagerClose()

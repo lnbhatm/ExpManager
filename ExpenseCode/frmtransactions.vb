@@ -203,9 +203,8 @@ Public Class frmtransactions
                 DataOption1:=Excel.XlSortDataOption.xlSortNormal)
             End With
 
-
             With worksheetexp
-                .Range("B" & TrnStrtIdx &  ":H579").Sort(Key1:=.Range("C" & TrnStrtIdx), Order1:=Excel.XlSortOrder.xlAscending, Header:=Excel.XlYesNoGuess.xlYes, _
+                .Range(trans_entry_range).Sort(Key1:=.Range("C" & TrnStrtIdx), Order1:=Excel.XlSortOrder.xlAscending, Header:=Excel.XlYesNoGuess.xlYes, _
                 OrderCustom:=1, MatchCase:=False, Orientation:=Excel.XlSortOrientation.xlSortColumns, _
                 DataOption1:=Excel.XlSortDataOption.xlSortNormal)
                 .Range("K77:K176").Copy()
