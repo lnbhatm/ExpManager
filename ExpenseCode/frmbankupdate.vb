@@ -9,16 +9,14 @@ Public Class frmbankupdate
     Dim APP As New Excel.Application
     Dim worksheet As Excel.Worksheet = Nothing
     Dim workbook As Excel.Workbook = Nothing
-    Dim filename As String
-    Public currentIndex As Integer
+    Dim filename As String    
     Dim blnExcelOpen As Boolean = False
     Dim enableclear As Boolean = False
 
 
     Private Sub cmdload_Click(sender As Object, e As EventArgs) Handles cmdload.Click
         Dim string1 As String
-        Dim i As Integer
-        currentIndex = 315
+        Dim i As Integer        
         Try
             APP = CType(GetObject(, "Excel.Application"), Excel.Application)
         Catch ex As Exception

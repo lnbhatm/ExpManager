@@ -32,7 +32,6 @@ Public Class frmreport
 
 
     Private Sub frmcashdist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DisableSound()
         DisableTextBox(Me)
         cmdload.Enabled = True
         cmdupdate.Enabled = False
@@ -320,7 +319,7 @@ Public Class frmreport
                 inext = inext + 1
                 worksheet.Cells(inext2, 1).value = "PERSONAL LOAN TAKEN / PERSONAL LOAN RECOVERED"
                 inext2 = inext2 + 1
-                For lopidx = 315 To iRow
+                For lopidx = TrnStrtIdx To iRow
                     If worksheet.Cells(lopidx, 6).value = "BANK025" Then
                         worksheet.Cells(inext, 2).value = worksheet.Cells(lopidx, 2).value
                         worksheet.Cells(inext, 3).value = worksheet.Cells(lopidx, 3).value

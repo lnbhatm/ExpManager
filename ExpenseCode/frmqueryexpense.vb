@@ -48,7 +48,7 @@ Public Class frmqueryexpense
 
     Private Sub frmquery_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim i As Integer = 0
-        Dim lopidx As Integer = 315
+        Dim lopidx As Integer = TrnStrtIdx
         Dim iRow As Long = 0
         Dim grdidx As Integer = 0
         ExcelAcountManagerOpen()
@@ -157,12 +157,12 @@ Public Class frmqueryexpense
         datadisplay.Refresh()
         With worksheet
             iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
-            If iRow = 314 Then
+            If iRow = (TrnStrtIdx) Then
                 MsgBox("No Transaction yet!", vbInformation, "Record")
             Else
                 displaydatagridheader("DESCRIPTION")
-                datadisplay.RowCount = iRow - 315
-                For lopidx = 315 To iRow
+                datadisplay.RowCount = iRow - TrnStrtIdx
+                For lopidx = TrnStrtIdx To iRow
                     If (worksheet.Cells(lopidx, 2).value <> vbNullString) And code = worksheet.Cells(lopidx, coloumnindex).value Then
                         val1 = worksheet.Cells(lopidx, 1).value
                         val2 = worksheet.Cells(lopidx, 2).value

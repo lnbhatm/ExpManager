@@ -52,27 +52,27 @@ Public Class frmdisprecord
     End Sub
 
     Private Sub frmrecord_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim lopidx As Integer = 315
+        Dim lopidx As Integer = TrnStrtIdx
         Dim iRow As Long = 0
         Dim grdidx As Integer = 0
         ExcelAcountManagerOpen()
         With worksheet
             iRow = .Range("B" & .Rows.Count).End(Excel.XlDirection.xlUp).Row
-            If iRow = 314 Then
+            If iRow = (TrnStrtIdx - 1) Then
                 MsgBox("No Transaction yet!", vbInformation, "Record")
             Else
                 DataGridView1.ColumnCount = 4
-                DataGridView1.RowCount = (iRow - 315) + 1
+                DataGridView1.RowCount = (iRow - TrnStrtIdx) + 1
                 DataGridView1.Columns(0).Name = "Sl No"
-                DataGridView1.Columns(1).Name = "Transaction Description"
-                DataGridView1.Columns(2).Name = "Transaction Date"
+                DataGridView1.Columns(1).Name = "Description"
+                DataGridView1.Columns(2).Name = "Date"
                 DataGridView1.Columns(3).Name = "Amount"
                 Dim columnHeaderStyle As New DataGridViewCellStyle()
                 columnHeaderStyle.BackColor = Color.Beige
                 columnHeaderStyle.Font = New Font("Callibri", 10, FontStyle.Bold)
                 DataGridView1.ColumnHeadersDefaultCellStyle = columnHeaderStyle
                 DataGridView1.RowHeadersVisible = False
-                For lopidx = 315 To iRow
+                For lopidx = TrnStrtIdx To iRow
                     If (worksheet.Cells(lopidx, 2).value <> vbNullString) Then
                         DataGridView1.Item(0, grdidx).Value = " " & worksheet.Cells(lopidx, 1).value & " "
                         DataGridView1.Item(1, grdidx).Value = " " & worksheet.Cells(lopidx, 2).value & " "

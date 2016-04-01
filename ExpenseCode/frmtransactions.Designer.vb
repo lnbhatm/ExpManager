@@ -361,7 +361,7 @@ Partial Class frmtransactions
         Me.Label10.TabIndex = 32
         Me.Label10.Text = "TRANSACTIONS"
         '
-        'frmtrans
+        'frmtransactions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -397,7 +397,7 @@ Partial Class frmtransactions
         Me.Controls.Add(Me.txtitemdesc)
         Me.Controls.Add(Me.cmdexit)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Name = "frmtrans"
+        Me.Name = "frmtransactions"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "TRANSACTIONS"

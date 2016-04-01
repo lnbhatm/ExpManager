@@ -205,7 +205,7 @@ Public Class frmtransactions
 
 
             With worksheetexp
-                .Range("B315:H579").Sort(Key1:=.Range("C315"), Order1:=Excel.XlSortOrder.xlAscending, Header:=Excel.XlYesNoGuess.xlYes, _
+                .Range("B" & TrnStrtIdx &  ":H579").Sort(Key1:=.Range("C" & TrnStrtIdx), Order1:=Excel.XlSortOrder.xlAscending, Header:=Excel.XlYesNoGuess.xlYes, _
                 OrderCustom:=1, MatchCase:=False, Orientation:=Excel.XlSortOrientation.xlSortColumns, _
                 DataOption1:=Excel.XlSortDataOption.xlSortNormal)
                 .Range("K77:K176").Copy()
@@ -510,11 +510,7 @@ Public Class frmtransactions
         Next i
     End Sub
 
-    Private Sub txtslno_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = Keys.Enter Then
-            readdate(txtslno.Text + 314)
-        End If
-    End Sub
+    
     Private Sub comboboxtransitemcode()
         Dim index As Integer = 0
         If blnExcelOpen = True Then
@@ -552,8 +548,6 @@ Public Class frmtransactions
             Next index
         End If
     End Sub
-
-
 
     Private Sub txtamount_KeyDown(sender As Object, e As KeyEventArgs) Handles txtamount.KeyDown
         If (e.KeyCode = Keys.Enter) Then
