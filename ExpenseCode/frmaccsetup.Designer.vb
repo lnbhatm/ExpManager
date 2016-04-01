@@ -23,8 +23,9 @@ Partial Class frmaccsetup
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.cmdexit = New System.Windows.Forms.Button()
-        Me.cmdnew = New System.Windows.Forms.Button()
+        Me.cmdnewmonth = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.cmdnewyear = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'cmdexit
@@ -33,7 +34,7 @@ Partial Class frmaccsetup
         Me.cmdexit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cmdexit.Font = New System.Drawing.Font("Calibri", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmdexit.ForeColor = System.Drawing.Color.Olive
-        Me.cmdexit.Location = New System.Drawing.Point(40, 73)
+        Me.cmdexit.Location = New System.Drawing.Point(40, 106)
         Me.cmdexit.Name = "cmdexit"
         Me.cmdexit.Size = New System.Drawing.Size(201, 25)
         Me.cmdexit.TabIndex = 0
@@ -41,19 +42,19 @@ Partial Class frmaccsetup
         Me.cmdexit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.cmdexit.UseVisualStyleBackColor = False
         '
-        'cmdnew
+        'cmdnewmonth
         '
-        Me.cmdnew.BackColor = System.Drawing.Color.White
-        Me.cmdnew.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdnew.Font = New System.Drawing.Font("Calibri", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmdnew.ForeColor = System.Drawing.Color.Olive
-        Me.cmdnew.Location = New System.Drawing.Point(40, 42)
-        Me.cmdnew.Name = "cmdnew"
-        Me.cmdnew.Size = New System.Drawing.Size(201, 25)
-        Me.cmdnew.TabIndex = 1
-        Me.cmdnew.Text = "CREATE NEW RECORD"
-        Me.cmdnew.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.cmdnew.UseVisualStyleBackColor = False
+        Me.cmdnewmonth.BackColor = System.Drawing.Color.White
+        Me.cmdnewmonth.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdnewmonth.Font = New System.Drawing.Font("Calibri", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdnewmonth.ForeColor = System.Drawing.Color.Olive
+        Me.cmdnewmonth.Location = New System.Drawing.Point(40, 42)
+        Me.cmdnewmonth.Name = "cmdnewmonth"
+        Me.cmdnewmonth.Size = New System.Drawing.Size(201, 25)
+        Me.cmdnewmonth.TabIndex = 1
+        Me.cmdnewmonth.Text = "RESET MONTH"
+        Me.cmdnewmonth.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdnewmonth.UseVisualStyleBackColor = False
         '
         'Label1
         '
@@ -66,14 +67,29 @@ Partial Class frmaccsetup
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "MONTHLY SETUP"
         '
+        'cmdnewyear
+        '
+        Me.cmdnewyear.BackColor = System.Drawing.Color.White
+        Me.cmdnewyear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdnewyear.Font = New System.Drawing.Font("Calibri", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmdnewyear.ForeColor = System.Drawing.Color.Olive
+        Me.cmdnewyear.Location = New System.Drawing.Point(39, 72)
+        Me.cmdnewyear.Name = "cmdnewyear"
+        Me.cmdnewyear.Size = New System.Drawing.Size(201, 25)
+        Me.cmdnewyear.TabIndex = 3
+        Me.cmdnewyear.Text = "RESET YEAR"
+        Me.cmdnewyear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.cmdnewyear.UseVisualStyleBackColor = False
+        '
         'frmaccsetup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(925, 485)
+        Me.Controls.Add(Me.cmdnewyear)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cmdnew)
+        Me.Controls.Add(Me.cmdnewmonth)
         Me.Controls.Add(Me.cmdexit)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmaccsetup"
@@ -83,6 +99,7 @@ Partial Class frmaccsetup
 
     End Sub
     Friend WithEvents cmdexit As System.Windows.Forms.Button
-    Friend WithEvents cmdnew As System.Windows.Forms.Button
+    Friend WithEvents cmdnewmonth As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cmdnewyear As System.Windows.Forms.Button
 End Class
