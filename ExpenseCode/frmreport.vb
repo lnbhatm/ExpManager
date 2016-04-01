@@ -17,6 +17,17 @@ Public Class frmreport
             End If
         Next ctrl
     End Sub
+    Public Sub ClearTextnum(ByVal root As Control)
+        For Each ctrl As Control In root.Controls
+            ClearTextnum(ctrl)
+            If TypeOf ctrl Is TextBox Then
+                If ctrl.Name.StartsWith("txtnum") Then
+                    ctrl.Text = ""
+                    ctrl.Enabled = False
+                End If
+            End If
+        Next ctrl
+    End Sub
 
 
     Public Sub EmptyTextBox(ByVal root As Control)
@@ -30,17 +41,30 @@ Public Class frmreport
     End Sub
 
 
+    Public Sub EnableGroup2TextBox(ByVal enable As Boolean)
+        For Each ctrl As Control In GroupBox2.Controls
+            If TypeOf ctrl Is TextBox Then
+                If (enable = True) Then
+                    CType(ctrl, TextBox).Enabled = True
+                Else
+                    CType(ctrl, TextBox).Enabled = False
+                End If
+            End If
+        Next ctrl
+    End Sub
 
     Private Sub frmcashdist_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DisableSound()
         DisableTextBox(Me)
         cmdload.Enabled = True
         cmdupdate.Enabled = False
+        cmdcancel.Enabled = False
         cmdexit.Enabled = True
         cmdsave.Enabled = False
         cboAccount.Enabled = False
         cmdcredit.Enabled = False
         cmddebit.Enabled = False
+        cmdreport.Enabled = False
         cboAccount.Items.Add("GIRISH")
         cboAccount.Items.Add("KARTHIK")
         cboAccount.Items.Add("SHUBHA")
@@ -105,9 +129,10 @@ Public Class frmreport
             txtcshonly.Text = Decimal.Round(worksheet.Cells(rowindex + 10, 3).Value, 2).ToString("f2")
             txttotcoin.Text = Decimal.Round(worksheet.Cells(rowindex + 11, 3).Value, 2).ToString("f2")
             txttotcash.Text = Decimal.Round(worksheet.Cells(rowindex + 12, 3).Value, 2).ToString("f2")
-            cmdupdate.Enabled = True
             cmdload.Enabled = False
-            cboAccount.Enabled = False
+            cboAccount.Enabled = True
+            cmdreport.Enabled = True
+            enableediting()
         End If
     End Sub
 
@@ -139,13 +164,24 @@ Public Class frmreport
             txttotcash.Text = Decimal.Round(worksheet.Cells(rowindex + 12, 3).Value, 2).ToString("f2")
             cmdupdate.Enabled = False
             cmdload.Enabled = False
-            cboAccount.Enabled = True
+            cmdreport.Enabled = True
+            enableediting()
         End If
+    End Sub
+
+    Private Sub enableediting()
+        txtreservedcoin.Enabled = True
+        txtreservednotes.Enabled = True
+        txtusagecoin.Enabled = True
+        txtgirish.Enabled = True
+        txtshubha.Enabled = True
+        txtkarthik.Enabled = True
+        txtother.Enabled = True
     End Sub
 
     Private Sub cmdsave_Click(sender As Object, e As EventArgs) Handles cmdsave.Click
         Dim rowindex As Integer = 0
-        If MsgBox("Are Your Sure You Want to Save the Changes?", vbYesNo, "Update") = vbYes Then
+        If MsgBox("Are Your Sure to Save?", vbYesNo, "Save Record") = vbYes Then
             If myRecordopen = True Then
                 With worksheet
                     If APP.WorksheetFunction.CountA(.Cells) <> 0 Then
@@ -160,11 +196,12 @@ Public Class frmreport
                 worksheet.Cells(rowindex + 5, 3).Value = txtkarthik.Text
                 worksheet.Cells(rowindex + 6, 3).Value = txtother.Text
                 workbook.Save()
-                cmdupdate.Enabled = True
                 cboAccount.Enabled = False
                 cboAccount.Text = ""
-                EmptyTextBox(Me)
+                ClearTextnum(Me)
                 cmdsave.Enabled = False
+                cmdcancel.Enabled = False
+                cmdupdate.Enabled = True
             Else
                 MsgBox("Record is closed")
             End If
@@ -174,9 +211,8 @@ Public Class frmreport
     End Sub
 
     Private Sub cboAccount_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAccount.SelectedIndexChanged
-        cmddebit.Enabled = True
-        cmdcredit.Enabled = True
-        'EmptyTextBox(Me)
+        ClearTextnum(Me)
+        EnableGroup2TextBox(False)
         If cboAccount.Text = "GIRISH" Then
             txtAccount.Text = txtgirish.Text
         ElseIf cboAccount.Text = "SHUBHA" Then
@@ -198,23 +234,8 @@ Public Class frmreport
         txtnum1.Enabled = True
         txtnum1.Focus()
         cboAccount.Enabled = False
+        cmdreport.Enabled = False
     End Sub
-
-    Private Function DataValidation(ByVal txtctl As TextBox) As Boolean
-        Dim bReturnValue As Boolean = True
-        If IsNumeric(txtctl.Text) = False Then
-            txtctl.BackColor = Color.Red
-            MsgBox("Please enter a number for value1", vbCritical, "Amount")
-
-            txtctl.BackColor = Color.White
-            bReturnValue = False
-            txtctl.Text = ""
-            DataValidation = bReturnValue
-            Exit Function
-        End If
-        DataValidation = True
-    End Function
-
     Private Sub updatedvalue()
 
         Dim rowindex As Integer = 0
@@ -244,7 +265,7 @@ Public Class frmreport
         Dim newsum As Double = 0.0
         cmddebit.Enabled = False
         cmdcredit.Enabled = False
-        newsum = CType(Val(txtsum.Text) + Val(txtAccount.Text), Double).ToString("f2")
+        newsum = CType(Val(txtnumsum.Text) + Val(txtAccount.Text), Double).ToString("f2")
         updatedistribution(newsum)
         cmdsave.Enabled = True
     End Sub
@@ -268,14 +289,10 @@ Public Class frmreport
     End Sub
 
     Private Sub cashdistributionfieldupdate(ByVal txtctl As TextBox, newsum As Double)
-        If MsgBox("Balance: " & Val(txtctl.Text) & " New Balance: " & newsum, vbCritical + vbYesNo, "Confirm Account Credit") = vbYes Then
+        If MsgBox(" Previous Balance:  " & Val(txtctl.Text) & vbCrLf & " Present   Balance:  " & newsum, vbCritical + vbYesNo, "Confirm Account Balance") = vbYes Then
             txtctl.Text = CType(newsum, Double).ToString("f2")
         End If
     End Sub
-
-
-
-
     Private Sub cmdreport_Click(sender As Object, e As EventArgs) Handles cmdreport.Click
         Dim iRow As Long = 0
         Dim inext As Long = 582
@@ -386,18 +403,17 @@ Public Class frmreport
             If My.Computer.FileSystem.FileExists(org2) Then
                 My.Computer.FileSystem.DeleteFile(org2)
             End If
+            MsgBox("Protected Account Statement Generated", vbInformation)
         End If
-        main.ToolStripStatusLabel.Text = "Protected Statement Generated." & pdftk.ExitCode
+        main.ToolStripStatusLabel.Text = "Protected Statement Generated with ExitCode: " & pdftk.ExitCode
+        cmdreport.Enabled = False
     End Sub
-
-
-
     Private Sub txtnum1_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum1.KeyDown
         If (e.KeyCode = Keys.Enter) Then
             txtnum2.Enabled = True
             txtnum2.Focus()
             txtnum1.Text = CType(Val(txtnum1.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum1.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum1.Text), Double).ToString("f2")
             txtnum1.Enabled = False
         End If
     End Sub
@@ -408,7 +424,7 @@ Public Class frmreport
             txtnum3.Enabled = True
             txtnum3.Focus()
             txtnum2.Text = CType(Val(txtnum2.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum2.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum2.Text), Double).ToString("f2")
             txtnum2.Enabled = False
         End If
     End Sub
@@ -418,7 +434,7 @@ Public Class frmreport
             txtnum4.Enabled = True
             txtnum4.Focus()
             txtnum3.Text = CType(Val(txtnum3.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum3.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum3.Text), Double).ToString("f2")
             txtnum3.Enabled = False
         End If
     End Sub
@@ -428,7 +444,7 @@ Public Class frmreport
             txtnum5.Enabled = True
             txtnum5.Focus()
             txtnum4.Text = CType(Val(txtnum4.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum4.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum4.Text), Double).ToString("f2")
             txtnum4.Enabled = False
         End If
     End Sub
@@ -438,7 +454,7 @@ Public Class frmreport
             txtnum6.Enabled = True
             txtnum6.Focus()
             txtnum5.Text = CType(Val(txtnum5.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum5.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum5.Text), Double).ToString("f2")
             txtnum5.Enabled = False
         End If
     End Sub
@@ -448,7 +464,7 @@ Public Class frmreport
             txtnum7.Enabled = True
             txtnum7.Focus()
             txtnum6.Text = CType(Val(txtnum6.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum6.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum6.Text), Double).ToString("f2")
             txtnum6.Enabled = False
         End If
     End Sub
@@ -458,7 +474,7 @@ Public Class frmreport
             txtnum8.Enabled = True
             txtnum8.Focus()
             txtnum7.Text = CType(Val(txtnum7.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum7.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum7.Text), Double).ToString("f2")
             txtnum7.Enabled = False
         End If
     End Sub
@@ -468,7 +484,7 @@ Public Class frmreport
             txtnum9.Enabled = True
             txtnum9.Focus()
             txtnum8.Text = CType(Val(txtnum8.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum8.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum8.Text), Double).ToString("f2")
             txtnum8.Enabled = False
         End If
     End Sub
@@ -478,28 +494,25 @@ Public Class frmreport
             txtnum10.Enabled = True
             txtnum10.Focus()
             txtnum9.Text = CType(Val(txtnum9.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum9.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum9.Text), Double).ToString("f2")
             txtnum9.Enabled = False
         End If
     End Sub
 
     Private Sub txtnum10_KeyDown(sender As Object, e As KeyEventArgs) Handles txtnum10.KeyDown
         If (e.KeyCode = Keys.Enter) Then
-            Dim msgresult
+
             txtnum10.Text = CType(Val(txtnum10.Text), Double).ToString("f2")
-            txtsum.Text = CType(Val(txtsum.Text) + Val(txtnum10.Text), Double).ToString("f2")
+            txtnumsum.Text = CType(Val(txtnumsum.Text) + Val(txtnum10.Text), Double).ToString("f2")
             txtnum10.Enabled = False
-            msgresult = MsgBox("Click Yes to Credit,No to Debit ?", vbYesNoCancel Or MsgBoxStyle.Critical, "CREDIT/DEBIT")
-            If msgresult = vbYes Then
-                cmdcredit.PerformClick()
-            ElseIf msgresult = vbNo Then
-                cmddebit.PerformClick()
+            MsgBox("Calculated: " & txtnumsum.Text, vbInformation, cboAccount.Text)
+            If cboAccount.Text <> "CALCULATOR" Then
+                cmdcredit.Enabled = True
+                cmddebit.Enabled = True
+                cmdcancel.Enabled = True
             Else
-                MsgBox("Nothing to be done", vbCritical)
-                cmdsave.Enabled = False
-                cmdcredit.Enabled = False
-                cmddebit.Enabled = False
-                EmptyTextBox(Me)
+                cboAccount.Enabled = True
+                cboAccount.Text = ""
             End If
         End If
     End Sub
@@ -508,23 +521,26 @@ Public Class frmreport
         Dim newsum As Double = 0.0
         cmddebit.Enabled = False
         cmdcredit.Enabled = False
-        If Val(txtAccount.Text) < Val(txtsum.Text) Then
+        If Val(txtAccount.Text) < Val(txtnumsum.Text) Then
             MsgBox("Something went wrong", vbCritical, "Inavalid Account Data")
             EmptyTextBox(Me)
             txtnum1.Enabled = True
             txtnum1.Focus()
-            cmdupdate.Enabled = True
+            cboAccount.Enabled = True
             cboAccount.Text = ""
-            cboAccount.Enabled = False
             cmdsave.Enabled = False
             Exit Sub
         End If
-        newsum = CType(Val(txtAccount.Text) - Val(txtsum.Text), Double).ToString("f2")
+        newsum = CType(Val(txtAccount.Text) - Val(txtnumsum.Text), Double).ToString("f2")
         updatedistribution(newsum)
         cmdsave.Enabled = True
     End Sub
 
-    Private Sub txtnum10_TextChanged(sender As Object, e As EventArgs) Handles txtnum10.TextChanged
-
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles cmdcancel.Click
+        cmdcredit.Enabled = False
+        cmddebit.Enabled = False
+        cmdcancel.Enabled = False
+        cmdsave.Enabled = False
+        cboAccount.Enabled = True
     End Sub
-End Class
+    End Class

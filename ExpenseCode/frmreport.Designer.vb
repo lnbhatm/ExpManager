@@ -69,7 +69,7 @@ Partial Class frmreport
         Me.txtnum8 = New System.Windows.Forms.TextBox()
         Me.txtnum9 = New System.Windows.Forms.TextBox()
         Me.txtnum10 = New System.Windows.Forms.TextBox()
-        Me.txtsum = New System.Windows.Forms.TextBox()
+        Me.txtnumsum = New System.Windows.Forms.TextBox()
         Me.cmddebit = New System.Windows.Forms.Button()
         Me.cmdcredit = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -78,6 +78,8 @@ Partial Class frmreport
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.cmdcancel = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -467,7 +469,7 @@ Partial Class frmreport
         Me.cmdupdate.Name = "cmdupdate"
         Me.cmdupdate.Size = New System.Drawing.Size(91, 31)
         Me.cmdupdate.TabIndex = 30
-        Me.cmdupdate.Text = "UPDATE"
+        Me.cmdupdate.Text = "RELOAD"
         Me.cmdupdate.UseVisualStyleBackColor = True
         '
         'cmdsave
@@ -640,22 +642,22 @@ Partial Class frmreport
         Me.txtnum10.TabIndex = 47
         Me.txtnum10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtsum
+        'txtnumsum
         '
-        Me.txtsum.BackColor = System.Drawing.Color.White
-        Me.txtsum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtsum.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.txtsum.Location = New System.Drawing.Point(48, 338)
-        Me.txtsum.Name = "txtsum"
-        Me.txtsum.Size = New System.Drawing.Size(94, 26)
-        Me.txtsum.TabIndex = 48
-        Me.txtsum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnumsum.BackColor = System.Drawing.Color.White
+        Me.txtnumsum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnumsum.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnumsum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.txtnumsum.Location = New System.Drawing.Point(48, 338)
+        Me.txtnumsum.Name = "txtnumsum"
+        Me.txtnumsum.Size = New System.Drawing.Size(94, 26)
+        Me.txtnumsum.TabIndex = 48
+        Me.txtnumsum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'cmddebit
         '
         Me.cmddebit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmddebit.Location = New System.Drawing.Point(768, 438)
+        Me.cmddebit.Location = New System.Drawing.Point(748, 438)
         Me.cmddebit.Name = "cmddebit"
         Me.cmddebit.Size = New System.Drawing.Size(60, 26)
         Me.cmddebit.TabIndex = 55
@@ -665,7 +667,7 @@ Partial Class frmreport
         'cmdcredit
         '
         Me.cmdcredit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdcredit.Location = New System.Drawing.Point(699, 438)
+        Me.cmdcredit.Location = New System.Drawing.Point(683, 438)
         Me.cmdcredit.Name = "cmdcredit"
         Me.cmdcredit.Size = New System.Drawing.Size(60, 26)
         Me.cmdcredit.TabIndex = 56
@@ -732,7 +734,6 @@ Partial Class frmreport
         Me.GroupBox2.Size = New System.Drawing.Size(540, 330)
         Me.GroupBox2.TabIndex = 58
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Distribution List"
         '
         'Label18
         '
@@ -758,6 +759,7 @@ Partial Class frmreport
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Label17)
         Me.GroupBox4.Controls.Add(Me.txtnum1)
         Me.GroupBox4.Controls.Add(Me.txtnum2)
         Me.GroupBox4.Controls.Add(Me.txtnum4)
@@ -766,7 +768,7 @@ Partial Class frmreport
         Me.GroupBox4.Controls.Add(Me.txtnum6)
         Me.GroupBox4.Controls.Add(Me.txtnum7)
         Me.GroupBox4.Controls.Add(Me.txtnum8)
-        Me.GroupBox4.Controls.Add(Me.txtsum)
+        Me.GroupBox4.Controls.Add(Me.txtnumsum)
         Me.GroupBox4.Controls.Add(Me.txtnum9)
         Me.GroupBox4.Controls.Add(Me.txtnum10)
         Me.GroupBox4.Location = New System.Drawing.Point(677, 60)
@@ -774,7 +776,28 @@ Partial Class frmreport
         Me.GroupBox4.Size = New System.Drawing.Size(191, 372)
         Me.GroupBox4.TabIndex = 61
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "GroupBox4"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Green
+        Me.Label17.Location = New System.Drawing.Point(66, 315)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(41, 15)
+        Me.Label17.TabIndex = 29
+        Me.Label17.Text = "TOTAL"
+        '
+        'cmdcancel
+        '
+        Me.cmdcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdcancel.Location = New System.Drawing.Point(814, 439)
+        Me.cmdcancel.Name = "cmdcancel"
+        Me.cmdcancel.Size = New System.Drawing.Size(60, 26)
+        Me.cmdcancel.TabIndex = 62
+        Me.cmdcancel.Text = "CANCEL"
+        Me.cmdcancel.UseVisualStyleBackColor = True
         '
         'frmreport
         '
@@ -782,6 +805,7 @@ Partial Class frmreport
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1175, 605)
+        Me.Controls.Add(Me.cmdcancel)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -854,7 +878,7 @@ Partial Class frmreport
     Friend WithEvents txtnum8 As System.Windows.Forms.TextBox
     Friend WithEvents txtnum9 As System.Windows.Forms.TextBox
     Friend WithEvents txtnum10 As System.Windows.Forms.TextBox
-    Friend WithEvents txtsum As System.Windows.Forms.TextBox
+    Friend WithEvents txtnumsum As System.Windows.Forms.TextBox
     Friend WithEvents cmddebit As System.Windows.Forms.Button
     Friend WithEvents cmdcredit As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -863,4 +887,6 @@ Partial Class frmreport
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents cmdreport As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents cmdcancel As System.Windows.Forms.Button
 End Class
