@@ -69,7 +69,7 @@ Partial Class frmreport
         Me.txtnum8 = New System.Windows.Forms.TextBox()
         Me.txtnum9 = New System.Windows.Forms.TextBox()
         Me.txtnum10 = New System.Windows.Forms.TextBox()
-        Me.txtsum = New System.Windows.Forms.TextBox()
+        Me.txtnumsum = New System.Windows.Forms.TextBox()
         Me.cmddebit = New System.Windows.Forms.Button()
         Me.cmdcredit = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -78,6 +78,8 @@ Partial Class frmreport
         Me.Label18 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.cmdcancel = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -89,8 +91,8 @@ Partial Class frmreport
         Me.lblcshdistr.AutoSize = True
         Me.lblcshdistr.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.lblcshdistr.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblcshdistr.ForeColor = System.Drawing.Color.Red
-        Me.lblcshdistr.Location = New System.Drawing.Point(112, 15)
+        Me.lblcshdistr.ForeColor = System.Drawing.Color.DarkRed
+        Me.lblcshdistr.Location = New System.Drawing.Point(193, 36)
         Me.lblcshdistr.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblcshdistr.Name = "lblcshdistr"
         Me.lblcshdistr.Size = New System.Drawing.Size(215, 29)
@@ -467,7 +469,7 @@ Partial Class frmreport
         Me.cmdupdate.Name = "cmdupdate"
         Me.cmdupdate.Size = New System.Drawing.Size(91, 31)
         Me.cmdupdate.TabIndex = 30
-        Me.cmdupdate.Text = "UPDATE"
+        Me.cmdupdate.Text = "RELOAD"
         Me.cmdupdate.UseVisualStyleBackColor = True
         '
         'cmdsave
@@ -495,11 +497,11 @@ Partial Class frmreport
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.ForeColor = System.Drawing.Color.Red
-        Me.Label15.Location = New System.Drawing.Point(672, 9)
+        Me.Label15.Font = New System.Drawing.Font("Calibri", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.Color.Maroon
+        Me.Label15.Location = New System.Drawing.Point(662, 36)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(144, 29)
+        Me.Label15.Size = New System.Drawing.Size(125, 26)
         Me.Label15.TabIndex = 33
         Me.Label15.Text = "CALCULATOR"
         '
@@ -535,7 +537,7 @@ Partial Class frmreport
         Me.txtnum1.BackColor = System.Drawing.Color.White
         Me.txtnum1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum1.Location = New System.Drawing.Point(48, 30)
+        Me.txtnum1.Location = New System.Drawing.Point(22, 20)
         Me.txtnum1.Name = "txtnum1"
         Me.txtnum1.Size = New System.Drawing.Size(94, 23)
         Me.txtnum1.TabIndex = 37
@@ -546,7 +548,7 @@ Partial Class frmreport
         Me.txtnum2.BackColor = System.Drawing.Color.White
         Me.txtnum2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum2.Location = New System.Drawing.Point(48, 57)
+        Me.txtnum2.Location = New System.Drawing.Point(22, 47)
         Me.txtnum2.Name = "txtnum2"
         Me.txtnum2.Size = New System.Drawing.Size(94, 23)
         Me.txtnum2.TabIndex = 38
@@ -557,7 +559,7 @@ Partial Class frmreport
         Me.txtnum3.BackColor = System.Drawing.Color.White
         Me.txtnum3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum3.Location = New System.Drawing.Point(48, 84)
+        Me.txtnum3.Location = New System.Drawing.Point(22, 74)
         Me.txtnum3.Name = "txtnum3"
         Me.txtnum3.Size = New System.Drawing.Size(94, 23)
         Me.txtnum3.TabIndex = 39
@@ -568,7 +570,7 @@ Partial Class frmreport
         Me.txtnum4.BackColor = System.Drawing.Color.White
         Me.txtnum4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum4.Location = New System.Drawing.Point(48, 111)
+        Me.txtnum4.Location = New System.Drawing.Point(22, 101)
         Me.txtnum4.Name = "txtnum4"
         Me.txtnum4.Size = New System.Drawing.Size(94, 23)
         Me.txtnum4.TabIndex = 40
@@ -579,7 +581,7 @@ Partial Class frmreport
         Me.txtnum5.BackColor = System.Drawing.Color.White
         Me.txtnum5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum5.Location = New System.Drawing.Point(48, 138)
+        Me.txtnum5.Location = New System.Drawing.Point(22, 128)
         Me.txtnum5.Name = "txtnum5"
         Me.txtnum5.Size = New System.Drawing.Size(94, 23)
         Me.txtnum5.TabIndex = 41
@@ -590,7 +592,7 @@ Partial Class frmreport
         Me.txtnum6.BackColor = System.Drawing.Color.White
         Me.txtnum6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum6.Location = New System.Drawing.Point(48, 165)
+        Me.txtnum6.Location = New System.Drawing.Point(22, 155)
         Me.txtnum6.Name = "txtnum6"
         Me.txtnum6.Size = New System.Drawing.Size(94, 23)
         Me.txtnum6.TabIndex = 42
@@ -601,7 +603,7 @@ Partial Class frmreport
         Me.txtnum7.BackColor = System.Drawing.Color.White
         Me.txtnum7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum7.Location = New System.Drawing.Point(48, 192)
+        Me.txtnum7.Location = New System.Drawing.Point(22, 182)
         Me.txtnum7.Name = "txtnum7"
         Me.txtnum7.Size = New System.Drawing.Size(94, 23)
         Me.txtnum7.TabIndex = 43
@@ -612,7 +614,7 @@ Partial Class frmreport
         Me.txtnum8.BackColor = System.Drawing.Color.White
         Me.txtnum8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum8.Location = New System.Drawing.Point(48, 219)
+        Me.txtnum8.Location = New System.Drawing.Point(22, 209)
         Me.txtnum8.Name = "txtnum8"
         Me.txtnum8.Size = New System.Drawing.Size(94, 23)
         Me.txtnum8.TabIndex = 44
@@ -623,7 +625,7 @@ Partial Class frmreport
         Me.txtnum9.BackColor = System.Drawing.Color.White
         Me.txtnum9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum9.Location = New System.Drawing.Point(48, 246)
+        Me.txtnum9.Location = New System.Drawing.Point(22, 236)
         Me.txtnum9.Name = "txtnum9"
         Me.txtnum9.Size = New System.Drawing.Size(94, 23)
         Me.txtnum9.TabIndex = 46
@@ -634,28 +636,28 @@ Partial Class frmreport
         Me.txtnum10.BackColor = System.Drawing.Color.White
         Me.txtnum10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtnum10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtnum10.Location = New System.Drawing.Point(48, 273)
+        Me.txtnum10.Location = New System.Drawing.Point(22, 263)
         Me.txtnum10.Name = "txtnum10"
         Me.txtnum10.Size = New System.Drawing.Size(94, 23)
         Me.txtnum10.TabIndex = 47
         Me.txtnum10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'txtsum
+        'txtnumsum
         '
-        Me.txtsum.BackColor = System.Drawing.Color.White
-        Me.txtsum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtsum.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.txtsum.Location = New System.Drawing.Point(48, 338)
-        Me.txtsum.Name = "txtsum"
-        Me.txtsum.Size = New System.Drawing.Size(94, 26)
-        Me.txtsum.TabIndex = 48
-        Me.txtsum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtnumsum.BackColor = System.Drawing.Color.White
+        Me.txtnumsum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtnumsum.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnumsum.ForeColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.txtnumsum.Location = New System.Drawing.Point(24, 306)
+        Me.txtnumsum.Name = "txtnumsum"
+        Me.txtnumsum.Size = New System.Drawing.Size(94, 26)
+        Me.txtnumsum.TabIndex = 48
+        Me.txtnumsum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'cmddebit
         '
         Me.cmddebit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmddebit.Location = New System.Drawing.Point(768, 438)
+        Me.cmddebit.Location = New System.Drawing.Point(735, 412)
         Me.cmddebit.Name = "cmddebit"
         Me.cmddebit.Size = New System.Drawing.Size(60, 26)
         Me.cmddebit.TabIndex = 55
@@ -665,7 +667,7 @@ Partial Class frmreport
         'cmdcredit
         '
         Me.cmdcredit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cmdcredit.Location = New System.Drawing.Point(699, 438)
+        Me.cmdcredit.Location = New System.Drawing.Point(662, 413)
         Me.cmdcredit.Name = "cmdcredit"
         Me.cmdcredit.Size = New System.Drawing.Size(60, 26)
         Me.cmdcredit.TabIndex = 56
@@ -732,7 +734,6 @@ Partial Class frmreport
         Me.GroupBox2.Size = New System.Drawing.Size(540, 330)
         Me.GroupBox2.TabIndex = 58
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Distribution List"
         '
         'Label18
         '
@@ -758,6 +759,7 @@ Partial Class frmreport
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.Label17)
         Me.GroupBox4.Controls.Add(Me.txtnum1)
         Me.GroupBox4.Controls.Add(Me.txtnum2)
         Me.GroupBox4.Controls.Add(Me.txtnum4)
@@ -766,15 +768,36 @@ Partial Class frmreport
         Me.GroupBox4.Controls.Add(Me.txtnum6)
         Me.GroupBox4.Controls.Add(Me.txtnum7)
         Me.GroupBox4.Controls.Add(Me.txtnum8)
-        Me.GroupBox4.Controls.Add(Me.txtsum)
+        Me.GroupBox4.Controls.Add(Me.txtnumsum)
         Me.GroupBox4.Controls.Add(Me.txtnum9)
         Me.GroupBox4.Controls.Add(Me.txtnum10)
-        Me.GroupBox4.Location = New System.Drawing.Point(677, 60)
+        Me.GroupBox4.Location = New System.Drawing.Point(658, 62)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(191, 372)
+        Me.GroupBox4.Size = New System.Drawing.Size(135, 341)
         Me.GroupBox4.TabIndex = 61
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "GroupBox4"
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Green
+        Me.Label17.Location = New System.Drawing.Point(47, 289)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(41, 15)
+        Me.Label17.TabIndex = 29
+        Me.Label17.Text = "TOTAL"
+        '
+        'cmdcancel
+        '
+        Me.cmdcancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cmdcancel.Location = New System.Drawing.Point(700, 443)
+        Me.cmdcancel.Name = "cmdcancel"
+        Me.cmdcancel.Size = New System.Drawing.Size(60, 26)
+        Me.cmdcancel.TabIndex = 62
+        Me.cmdcancel.Text = "CANCEL"
+        Me.cmdcancel.UseVisualStyleBackColor = True
         '
         'frmreport
         '
@@ -782,6 +805,7 @@ Partial Class frmreport
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1175, 605)
+        Me.Controls.Add(Me.cmdcancel)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
@@ -854,7 +878,7 @@ Partial Class frmreport
     Friend WithEvents txtnum8 As System.Windows.Forms.TextBox
     Friend WithEvents txtnum9 As System.Windows.Forms.TextBox
     Friend WithEvents txtnum10 As System.Windows.Forms.TextBox
-    Friend WithEvents txtsum As System.Windows.Forms.TextBox
+    Friend WithEvents txtnumsum As System.Windows.Forms.TextBox
     Friend WithEvents cmddebit As System.Windows.Forms.Button
     Friend WithEvents cmdcredit As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -863,4 +887,6 @@ Partial Class frmreport
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents cmdreport As System.Windows.Forms.Button
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents cmdcancel As System.Windows.Forms.Button
 End Class

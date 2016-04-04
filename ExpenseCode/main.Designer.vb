@@ -51,8 +51,8 @@ Partial Class main
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MainToolStripMenuItem, Me.ShowToolStripMenuItem, Me.HELPToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Padding = New System.Windows.Forms.Padding(8, 3, 0, 3)
-        Me.MenuStrip.Size = New System.Drawing.Size(1184, 26)
+        Me.MenuStrip.Padding = New System.Windows.Forms.Padding(9, 3, 0, 3)
+        Me.MenuStrip.Size = New System.Drawing.Size(1332, 25)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         '
@@ -60,48 +60,48 @@ Partial Class main
         '
         Me.MainToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.MainToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetupToolStripMenuItem1, Me.SetupToolStripMenuItem, Me.TransactionEntryToolStripMenuItem, Me.CashDistributionToolStripMenuItem, Me.ExitToolStripMenuItem})
-        Me.MainToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MainToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MainToolStripMenuItem.ForeColor = System.Drawing.Color.Green
         Me.MainToolStripMenuItem.Name = "MainToolStripMenuItem"
-        Me.MainToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.MainToolStripMenuItem.Size = New System.Drawing.Size(44, 19)
         Me.MainToolStripMenuItem.Text = "FILE"
         '
         'SetupToolStripMenuItem1
         '
-        Me.SetupToolStripMenuItem1.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SetupToolStripMenuItem1.ForeColor = System.Drawing.Color.Indigo
+        Me.SetupToolStripMenuItem1.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SetupToolStripMenuItem1.ForeColor = System.Drawing.Color.HotPink
         Me.SetupToolStripMenuItem1.Name = "SetupToolStripMenuItem1"
         Me.SetupToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.SetupToolStripMenuItem1.Text = "Reset"
         '
         'SetupToolStripMenuItem
         '
-        Me.SetupToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SetupToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.SetupToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SetupToolStripMenuItem.ForeColor = System.Drawing.Color.HotPink
         Me.SetupToolStripMenuItem.Name = "SetupToolStripMenuItem"
         Me.SetupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SetupToolStripMenuItem.Text = "Savings"
         '
         'TransactionEntryToolStripMenuItem
         '
-        Me.TransactionEntryToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TransactionEntryToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.TransactionEntryToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TransactionEntryToolStripMenuItem.ForeColor = System.Drawing.Color.HotPink
         Me.TransactionEntryToolStripMenuItem.Name = "TransactionEntryToolStripMenuItem"
         Me.TransactionEntryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.TransactionEntryToolStripMenuItem.Text = "Expenses"
+        Me.TransactionEntryToolStripMenuItem.Text = "Add"
         '
         'CashDistributionToolStripMenuItem
         '
-        Me.CashDistributionToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CashDistributionToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.CashDistributionToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CashDistributionToolStripMenuItem.ForeColor = System.Drawing.Color.HotPink
         Me.CashDistributionToolStripMenuItem.Name = "CashDistributionToolStripMenuItem"
         Me.CashDistributionToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CashDistributionToolStripMenuItem.Text = "Report"
         '
         'ExitToolStripMenuItem
         '
-        Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ExitToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ExitToolStripMenuItem.ForeColor = System.Drawing.Color.HotPink
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
@@ -110,41 +110,44 @@ Partial Class main
         '
         Me.ShowToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.ShowToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BankingToolStripMenuItem, Me.ExpenseToolStripMenuItem, Me.QueryToolStripMenuItem})
-        Me.ShowToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ShowToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ShowToolStripMenuItem.ForeColor = System.Drawing.Color.Green
         Me.ShowToolStripMenuItem.Name = "ShowToolStripMenuItem"
-        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
-        Me.ShowToolStripMenuItem.Text = "ENQUIRY"
+        Me.ShowToolStripMenuItem.Size = New System.Drawing.Size(57, 19)
+        Me.ShowToolStripMenuItem.Text = "QUERY"
         '
         'BankingToolStripMenuItem
         '
-        Me.BankingToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.BankingToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BankingToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.BankingToolStripMenuItem.Name = "BankingToolStripMenuItem"
-        Me.BankingToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.BankingToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.BankingToolStripMenuItem.Text = "Balance"
         '
         'ExpenseToolStripMenuItem
         '
-        Me.ExpenseToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.ExpenseToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ExpenseToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.ExpenseToolStripMenuItem.Name = "ExpenseToolStripMenuItem"
-        Me.ExpenseToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.ExpenseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExpenseToolStripMenuItem.Text = "Transactions"
         '
         'QueryToolStripMenuItem
         '
-        Me.QueryToolStripMenuItem.ForeColor = System.Drawing.Color.Indigo
+        Me.QueryToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.QueryToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.QueryToolStripMenuItem.Name = "QueryToolStripMenuItem"
-        Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.QueryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QueryToolStripMenuItem.Text = "Record"
         '
         'HELPToolStripMenuItem
         '
         Me.HELPToolStripMenuItem.BackColor = System.Drawing.Color.White
         Me.HELPToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
-        Me.HELPToolStripMenuItem.Font = New System.Drawing.Font("Verdana", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.HELPToolStripMenuItem.Font = New System.Drawing.Font("Cambria", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.HELPToolStripMenuItem.ForeColor = System.Drawing.Color.Green
         Me.HELPToolStripMenuItem.Name = "HELPToolStripMenuItem"
-        Me.HELPToolStripMenuItem.Size = New System.Drawing.Size(52, 20)
+        Me.HELPToolStripMenuItem.Size = New System.Drawing.Size(49, 19)
         Me.HELPToolStripMenuItem.Text = "HELP"
         '
         'AboutToolStripMenuItem
@@ -159,8 +162,8 @@ Partial Class main
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 639)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip.Size = New System.Drawing.Size(1184, 22)
+        Me.StatusStrip.Padding = New System.Windows.Forms.Padding(1, 0, 21, 0)
+        Me.StatusStrip.Size = New System.Drawing.Size(1332, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -176,14 +179,14 @@ Partial Class main
         '
         'main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 19.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 19.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1184, 661)
+        Me.ClientSize = New System.Drawing.Size(1332, 661)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
-        Me.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Font = New System.Drawing.Font("Cambria", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.Black
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)

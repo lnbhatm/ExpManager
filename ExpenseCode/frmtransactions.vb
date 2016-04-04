@@ -245,9 +245,7 @@ Public Class frmtransactions
                     End If
                 Next lopidx
             End With
-
             workbook.Save()
-
             If worksheetexp.Cells(197, 3).Value > 0 Then
                 worksheetexp.Cells(595, 4).Value = worksheetexp.Cells(197, 3).Value - worksheetexp.Cells(197, 4).Value
             Else
@@ -267,8 +265,6 @@ Public Class frmtransactions
             Else
                 worksheetexp.Cells(597, 4).Value = worksheetexp.Cells(200, 3).Value + worksheetexp.Cells(200, 4).Value
             End If
-
-
             cmdupdate.Enabled = False
             cmdadd.Enabled = True
             cmdreset.Enabled = False

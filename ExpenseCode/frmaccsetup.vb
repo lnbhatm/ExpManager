@@ -73,7 +73,7 @@ Public Class frmaccsetup
                 worksheet.Range("C613").AutoFill(worksheet.Range("C613:C" & endingindex - 1), Excel.XlAutoFillType.xlFillDays)
                 worksheet.Range("D613").AutoFill(worksheet.Range("D613:D" & endingindex - 1), Excel.XlAutoFillType.xlFillDefault)
                 With worksheet
-                    .Range("income_prev_range").Value = "0.00"
+                    .Range(income_prev_range).Value = "0.00"
                     For lopidx = 3 To 52
                         If .Cells(lopidx, 4).Value >= 0 Then
                             .Cells(lopidx, 9).Value = .Cells(lopidx, 4).Value
@@ -111,7 +111,7 @@ Public Class frmaccsetup
                 worksheet.Range("C613").AutoFill(worksheet.Range("C613:C" & endingindex - 1), Excel.XlAutoFillType.xlFillDays)
                 worksheet.Range("D613").AutoFill(worksheet.Range("D613:D" & endingindex - 1), Excel.XlAutoFillType.xlFillDefault)
                 With worksheet
-                    .Range("income_prev_range").Value = "0.00"
+                    .Range(income_prev_range).Value = "0.00"
                     For lopidx = 3 To 52
                         If .Cells(lopidx, 4).Value >= 0 Then
                             .Cells(lopidx, 9).Value = .Cells(lopidx, 4).Value
